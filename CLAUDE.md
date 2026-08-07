@@ -60,6 +60,17 @@ pip install -r requirements.txt
 streamlit run app.py     # http://localhost:8501
 ```
 
+## Git & deployment
+
+- Hosted on GitHub at https://github.com/alcaloide2000/economia (public, `master`
+  branch).
+- Deployed to Render as a free-tier web service, defined by the `render.yaml` blueprint
+  in the repo root (`npm install && npm run build` / `npm run start`); live at
+  https://economia-o778.onrender.com. The service is connected to the GitHub repo, so
+  pushing to `master` triggers an auto-deploy — there is no separate manual deploy step.
+  Free-tier services spin down after inactivity, so the first request after a while can
+  take ~30s+ to respond while it wakes back up.
+
 ## Architecture
 
 - `src/data/course.ts` is the single source of truth for course content: `courseParts`
