@@ -11,7 +11,7 @@ export default function Schedule() {
 
       {courseParts.map((part) => {
         const lessons = part.lessons.filter((lesson) => lesson.notebookVideos && lesson.notebookVideos.length > 0);
-        if (lessons.length === 0) return null;
+        if (lessons.length === 0 && !part.alwaysShow) return null;
 
         return (
           <section className="part" key={part.title}>
