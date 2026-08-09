@@ -75,7 +75,7 @@ export const courseParts: CoursePart[] = [
   {
     title: "Introducción a la Macroeconomía y Complementos",
     lessons: [
-      { day: 20, title: "Presentación del segundo semestre", topics: "Apertura del bloque de macroeconomía.", companionUrl: companionUrl(20), notebookVideos: [{ title: "Clase 20. Huerta de Soto desmonta el Sistema Monetario actual en clase", url: "https://www.youtube.com/watch?v=bAy9g1wy_74" }] },
+      { day: 20, title: "Cierre de la teoría del dinero", topics: "Efecto Cantillon y vías de inyección del dinero. Reparto uniforme vs. redistribución (el símil de la miel). Interpretación inflacionista de la historia. Definiciones de Mises sobre dinero y sustitutos monetarios. Ventajas del patrón oro y su abandono.", companionUrl: companionUrl(20), notebookVideos: [{ title: "Clase 20. Huerta de Soto desmonta el Sistema Monetario actual en clase", url: "https://www.youtube.com/watch?v=bAy9g1wy_74" }], mindMapUrl: "https://claude.ai/code/artifact/3e9e85b8-6d42-45ee-add7-f2f850a0022f" },
       { day: 21, title: "Naturaleza jurídica del contrato de depósito irregular de dinero", topics: "Diferencia entre préstamo y depósito. Cosas fungibles.", companionUrl: companionUrl(21) },
       { day: 22, title: "El depósito irregular y el préstamo", topics: "Diferencias esenciales entre depósito irregular y préstamo. Derecho de propiedad y disponibilidad.", companionUrl: companionUrl(22) },
       { day: 23, title: "El depósito irregular a lo largo de la historia", topics: "Grecia, Roma, Templarios, Médicis.", companionUrl: companionUrl(23) },
