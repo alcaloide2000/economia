@@ -1,4 +1,4 @@
-min# CLAUDE.md
+# CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
@@ -6,8 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A Next.js (App Router, TypeScript) site that organizes the material for Jesús Huerta
 de Soto's "Introducción a la Economía" course (Austrian School economics, Universidad
-Rey Juan Carlos). It renders a structured syllabus (43 daily lessons across 7 parts,
-plus a closing lecture) and a materials list.
+Rey Juan Carlos). It renders a structured syllabus (43 daily lessons grouped into the
+course's 7 "Parte" sections in the underlying data — see below) and a materials list.
 
 The course content — the full syllabus, lecture-video titles, and PDF references — was
 sourced from a NotebookLM notebook ("Huerta de Soto", notebook id
@@ -74,18 +74,27 @@ streamlit run app.py     # http://localhost:8501
 ## Architecture
 
 - `src/data/course.ts` is the single source of truth for course content: `courseParts`
-  (array of `{ title, lessons[] }`, where each lesson has `day`, `title`, `topics`, an
-  optional `companionUrl` pointing at the per-day video index on anarcocapitalista.com,
-  an optional `notebookVideos` array (one entry per lecture recording already saved as a
-  source in the NotebookLM notebook for that day — a day can have more than one, e.g. a
-  "bis"/supplementary recording alongside the main class), and an optional `mindMapUrl`
-  pointing at a published mind-map Artifact for that lesson), `closingLesson`, and
-  `courseMaterials` (the PDFs and extra videos in the notebook that aren't tied to a
-  single day).
+  (array of `{ title, lessons[] }` — the 7 numbered "Parte" sections of the official
+  syllabus; a lesson is filed under whichever part it thematically belongs to, which is
+  not always the part its `day` number would suggest if the video's actual content runs
+  ahead of or behind the printed programme — check the transcript, not just the day
+  number, before trusting a lesson's placement or `topics` text). Each lesson has `day`,
+  `title`, `topics`, an optional `companionUrl` pointing at the per-day video index on
+  anarcocapitalista.com (kept in the data for every lesson but not currently rendered
+  anywhere — see below), an optional `notebookVideos` array (one entry per lecture
+  recording already saved as a source in the NotebookLM notebook for that day — a day
+  can have more than one, e.g. a "bis"/supplementary recording alongside the main
+  class), and an optional `mindMapUrl` pointing at a published mind-map Artifact for
+  that lesson. `course.ts` also exports `closingLesson` (the course's closing lecture)
+  and `courseMaterials` (the PDFs and extra videos in the notebook that aren't tied to a
+  single day); `closingLesson` is no longer rendered by `schedule/page.tsx` (removed
+  along with the `companionUrl` per-lesson link) but is left in the data in case it's
+  wanted again.
 - `src/app/schedule/page.tsx` only renders lessons that have at least one entry in
   `notebookVideos` — days without a saved NotebookLM source (or whole course parts made
-  up entirely of such days) are hidden from the temario. `src/app/page.tsx` is the
-  overview/home page.
+  up entirely of such days) are hidden from the temario. For each rendered lesson it
+  shows the `notebookVideos` links and the `mindMapUrl` link, if set; it does not render
+  `companionUrl` or `closingLesson`. `src/app/page.tsx` is the overview/home page.
 - To add or correct course content, edit `src/data/course.ts` directly; do not
   hardcode lesson data inside page components.
 - To generate a mind map for a lesson: pull that lesson's video transcript(s) via
