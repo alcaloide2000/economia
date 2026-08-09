@@ -13,7 +13,7 @@ The course content — the full syllabus, lecture-video titles, and PDF referenc
 sourced from a NotebookLM notebook ("Huerta de Soto", notebook id
 `7174958a-254b-47ae-bf50-bf52b9cce911`) that holds the official study guide PDF
 (`Curso_Internet_JHS_ebook_pro.pdf`), a related paper on economic calculation and
-socialism, and 22 YouTube lecture videos (24 sources total). If more course data needs
+socialism, and 24 YouTube lecture videos (26 sources total). If more course data needs
 to be pulled in later (additional lecture transcripts, more days' videos, etc.), query
 that notebook via the `notebooklm-mcp` MCP tools rather than re-deriving the syllabus
 by hand.
@@ -39,6 +39,21 @@ every so often, not just once per machine). The symptom is
 Fix: run `nlm login` via Bash (opens a Chrome window for the Google sign-in), then call
 `mcp__notebooklm-mcp__refresh_auth` so the MCP server picks up the new tokens — then
 retry the `source_get_content` call. Expect to do this more than once per session.
+
+### "Clase N" video numbers don't match "Día N" syllabus days
+
+The YouTube video titled "Clase N" (the professor's own recording-session numbering) is
+**not** guaranteed to cover the topic printed under Día N in the study guide — the two
+numbering schemes drift apart. Confirmed cases so far: Clase 20 is actually the closing
+lecture of the money-theory block, not "apertura del bloque de macroeconomía"; Clase 21
+is a semester-opening/philosophy-of-teaching class; Clase 22 is a one-off commentary on
+Javier Milei's Davos speech; Clase 23 is the actual "naturaleza jurídica del contrato de
+depósito irregular" lecture (covering what the printed programme splits across two days).
+Always pull and read the transcript before trusting a `notebookVideos` title-to-day
+assignment or writing a lesson's `title`/`topics` from it — don't assume Clase N ≈ Día N.
+When a mismatch surfaces, ask the user how they want it resolved (there's no single
+correct default: past sessions have both relabeled the day to match the video's real
+content, and kept the naive 1:1 numbering with a documented caveat).
 
 ## Commands
 
@@ -74,13 +89,22 @@ streamlit run app.py     # http://localhost:8501
 ## Architecture
 
 - `src/data/course.ts` is the single source of truth for course content: `courseParts`
-  (array of `{ title, lessons[] }` — the 7 numbered "Parte" sections of the official
-  syllabus; a lesson is filed under whichever part it thematically belongs to, which is
-  not always the part its `day` number would suggest if the video's actual content runs
-  ahead of or behind the printed programme — check the transcript, not just the day
-  number, before trusting a lesson's placement or `topics` text). Each lesson has `day`,
-  `title`, `topics`, an optional `companionUrl` pointing at the per-day video index on
-  anarcocapitalista.com (kept in the data for every lesson but not currently rendered
+  (array of `{ title, lessons[], alwaysShow? }`). Most parts are the 7 numbered "Parte"
+  sections of the official syllabus, but there are also a few unofficial, un-numbered
+  divider sections (e.g. "Introducción a la Microeconomía y Complementos" at Día 1,
+  "Dinero y Ciclos Económicos" at Día 21) used when a run of days doesn't belong to any
+  of the 7 official parts — don't invent a "Quinta Parte:"-style ordinal for one of these
+  unless it's actually the next real part in sequence, since the numbered ordinals are
+  already used further down the syllabus. A lesson is filed under whichever part it
+  thematically belongs to, which is not always the part its `day` number would suggest if
+  the video's actual content runs ahead of or behind the printed programme — check the
+  transcript, not just the day number, before trusting a lesson's placement or `topics`
+  text (see the "Clase N" vs "Día N" gotcha above). `alwaysShow: true` on a part makes
+  `schedule/page.tsx` render that part's heading even when none of its lessons have a
+  `notebookVideos` entry yet — used for a just-created divider section whose days don't
+  have videos yet, so the heading isn't silently hidden along with them. Each lesson has
+  `day`, `title`, `topics`, an optional `companionUrl` pointing at the per-day video index
+  on anarcocapitalista.com (kept in the data for every lesson but not currently rendered
   anywhere — see below), an optional `notebookVideos` array (one entry per lecture
   recording already saved as a source in the NotebookLM notebook for that day — a day
   can have more than one, e.g. a "bis"/supplementary recording alongside the main
@@ -92,9 +116,10 @@ streamlit run app.py     # http://localhost:8501
   wanted again.
 - `src/app/schedule/page.tsx` only renders lessons that have at least one entry in
   `notebookVideos` — days without a saved NotebookLM source (or whole course parts made
-  up entirely of such days) are hidden from the temario. For each rendered lesson it
-  shows the `notebookVideos` links and the `mindMapUrl` link, if set; it does not render
-  `companionUrl` or `closingLesson`. `src/app/page.tsx` is the overview/home page.
+  up entirely of such days, unless `alwaysShow` is set) are hidden from the temario. For
+  each rendered lesson it shows the `notebookVideos` links and the `mindMapUrl` link, if
+  set; it does not render `companionUrl` or `closingLesson`. `src/app/page.tsx` is the
+  overview/home page.
 - To add or correct course content, edit `src/data/course.ts` directly; do not
   hardcode lesson data inside page components.
 - To generate a mind map for a lesson: pull that lesson's video transcript(s) via
