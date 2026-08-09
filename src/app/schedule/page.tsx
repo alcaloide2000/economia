@@ -41,14 +41,6 @@ export default function Schedule() {
           </section>
         );
       })}
-
-      <section className="part">
-        <h2>Clausura</h2>
-        <div className="lesson">
-          <h3>{closingLesson.title}</h3>
-          <p>{closingLesson.topics}</p>
-        </div>
-      </section>
     </main>
   );
 }

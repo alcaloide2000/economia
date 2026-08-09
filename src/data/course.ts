@@ -70,11 +70,6 @@ export const courseParts: CoursePart[] = [
       { day: 17, title: "Los precios", topics: "Valoración y tasación, cálculo de costes, principio general de costes. Competencia y monopolio.", companionUrl: companionUrl(17), notebookVideos: [{ title: "Clase 17. La Gran Farsa del Libre Mercado. Cómo el Estado Controla la Economía. Jesús Huerta de Soto", url: "https://www.youtube.com/watch?v=1xAt0b--W-E" }] },
       { day: 18, title: "Los precios de monopolio", topics: "La ilusión del precio de monopolio.", companionUrl: companionUrl(18), notebookVideos: [{ title: "Clase 18. Dinero, Inflación, Oro y Poder: Claves para Entender la Economía Actual. Huerta de Soto", url: "https://www.youtube.com/watch?v=4QtW0_OMgJI" }] },
       { day: 19, title: "Teoría del dinero", topics: "Naturaleza y origen. El dinero como institución social por excelencia. El oro. El cambio indirecto: características y precio del dinero. Inflación, deflación y sustitutos monetarios.", companionUrl: companionUrl(19), notebookVideos: [{ title: "Clase 19. ¿Por qué el Dinero Pierde Valor? La Verdad que NADIE Explica (Lo hace Huerta de Soto)", url: "https://www.youtube.com/watch?v=LevA8RcNL_c" }] },
-    ],
-  },
-  {
-    title: "Introducción a la Macroeconomía y Complementos",
-    lessons: [
       { day: 20, title: "Cierre de la teoría del dinero", topics: "Efecto Cantillon y vías de inyección del dinero. Reparto uniforme vs. redistribución (el símil de la miel). Interpretación inflacionista de la historia. Definiciones de Mises sobre dinero y sustitutos monetarios. Ventajas del patrón oro y su abandono.", companionUrl: companionUrl(20), notebookVideos: [{ title: "Clase 20. Huerta de Soto desmonta el Sistema Monetario actual en clase", url: "https://www.youtube.com/watch?v=bAy9g1wy_74" }], mindMapUrl: "https://claude.ai/code/artifact/3e9e85b8-6d42-45ee-add7-f2f850a0022f" },
       { day: 21, title: "Naturaleza jurídica del contrato de depósito irregular de dinero", topics: "Diferencia entre préstamo y depósito. Cosas fungibles.", companionUrl: companionUrl(21) },
       { day: 22, title: "El depósito irregular y el préstamo", topics: "Diferencias esenciales entre depósito irregular y préstamo. Derecho de propiedad y disponibilidad.", companionUrl: companionUrl(22) },
