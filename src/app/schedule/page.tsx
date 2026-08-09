@@ -31,11 +31,6 @@ export default function Schedule() {
                     )}
                   </p>
                 ))}
-                {lesson.companionUrl && (
-                  <a href={lesson.companionUrl} target="_blank" rel="noreferrer">
-                    Vídeos del día {lesson.day} →
-                  </a>
-                )}
                 {lesson.mindMapUrl && (
                   <a href={lesson.mindMapUrl} target="_blank" rel="noreferrer">
                     🧠 Mapa mental →
