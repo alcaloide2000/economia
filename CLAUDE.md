@@ -13,7 +13,7 @@ The course content — the full syllabus, lecture-video titles, and PDF referenc
 sourced from a NotebookLM notebook ("Huerta de Soto", notebook id
 `7174958a-254b-47ae-bf50-bf52b9cce911`) that holds the official study guide PDF
 (`Curso_Internet_JHS_ebook_pro.pdf`), a related paper on economic calculation and
-socialism, and 24 YouTube lecture videos (26 sources total). If more course data needs
+socialism, and 25 YouTube lecture videos (27 sources total). If more course data needs
 to be pulled in later (additional lecture transcripts, more days' videos, etc.), query
 that notebook via the `notebooklm-mcp` MCP tools rather than re-deriving the syllabus
 by hand.
@@ -118,8 +118,25 @@ streamlit run app.py     # http://localhost:8501
   `notebookVideos` — days without a saved NotebookLM source (or whole course parts made
   up entirely of such days, unless `alwaysShow` is set) are hidden from the temario. For
   each rendered lesson it shows the `notebookVideos` links and the `mindMapUrl` link, if
-  set; it does not render `companionUrl` or `closingLesson`. `src/app/page.tsx` is the
-  overview/home page.
+  set; it does not render `companionUrl` or `closingLesson`. Each lesson renders as a
+  `.lesson-card` article with a `Día N` `.day-badge`; the card gets the `has-mindmap`
+  class (a gold left-border accent) when `lesson.mindMapUrl` is set, so mapped days stand
+  out at a glance while scanning the temario. `src/app/page.tsx` is the overview/home
+  page — besides the course header/materials, it renders a `.mindmap-grid` of cards (one
+  per lesson with a `mindMapUrl`, flattened across all `courseParts` and sorted by `day`)
+  linking straight out to every published mind map, so new maps just need `mindMapUrl`
+  set on their lesson to appear there automatically.
+- The site's visual design (home and schedule pages) intentionally mirrors the mind-map
+  Artifacts' own look: a cream/ink palette with a gold `--accent`, serif headings
+  (`"Iowan Old Style", "Palatino Linotype", Palatino, Georgia`), and card-based layouts.
+  The palette lives as CSS custom properties in `src/app/globals.css` (`--bg`,
+  `--bg-raised`, `--ink`, `--ink-soft`, `--line`, `--accent`, `--accent-soft`,
+  `--accent-ink`), redefined under `@media (prefers-color-scheme: dark)` — there's no
+  light/dark toggle, just OS preference. Keep new UI on these pages built from the
+  existing token/class vocabulary (`.pill`, `.cta-link`, `.day-badge`, card classes) for
+  visual consistency rather than one-off colors, and reuse the same palette instinct if a
+  mind map's own gold/citation accent color ever needs to change — the two are meant to
+  stay recognizably related.
 - To add or correct course content, edit `src/data/course.ts` directly; do not
   hardcode lesson data inside page components.
 - To generate a mind map for a lesson: pull that lesson's video transcript(s) via
