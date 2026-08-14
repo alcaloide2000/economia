@@ -13,7 +13,7 @@ The course content — the full syllabus, lecture-video titles, and PDF referenc
 sourced from a NotebookLM notebook ("Huerta de Soto", notebook id
 `7174958a-254b-47ae-bf50-bf52b9cce911`) that holds the official study guide PDF
 (`Curso_Internet_JHS_ebook_pro.pdf`), a related paper on economic calculation and
-socialism, and 25 YouTube lecture videos (27 sources total). If more course data needs
+socialism, and 28 YouTube lecture videos (29 sources total). If more course data needs
 to be pulled in later (additional lecture transcripts, more days' videos, etc.), query
 that notebook via the `notebooklm-mcp` MCP tools rather than re-deriving the syllabus
 by hand.
@@ -49,11 +49,22 @@ lecture of the money-theory block, not "apertura del bloque de macroeconomía"; 
 is a semester-opening/philosophy-of-teaching class; Clase 22 is a one-off commentary on
 Javier Milei's Davos speech; Clase 23 is the actual "naturaleza jurídica del contrato de
 depósito irregular" lecture (covering what the printed programme splits across two days).
-Always pull and read the transcript before trusting a `notebookVideos` title-to-day
-assignment or writing a lesson's `title`/`topics` from it — don't assume Clase N ≈ Día N.
-When a mismatch surfaces, ask the user how they want it resolved (there's no single
-correct default: past sessions have both relabeled the day to match the video's real
-content, and kept the naive 1:1 numbering with a documented caveat).
+From Clase 24 on, the drift becomes a sustained one-day lag rather than an isolated
+mismatch: Clase 24's own map stops short of the Día 24 syllabus topic ("bancos en la
+historia") and ends on a "lo que viene: la Escuela de Salamanca" teaser; Clase 25 mostly
+finishes that same banking-history material (Barcelona, Salamanca, Ámsterdam, Cantillón)
+and only introduces the real Día 25 topic (fundamentación jurídica de la reserva
+fraccionaria) in its last few minutes, promising "el jueves"; Clase 26 is that promised
+follow-up — it fully develops Día 25's doctrinal-justification topic and only lightly
+touches Día 26's real topic (proceso de expansión crediticia), again deferring the detail
+to the next class. Both Día 25 and Día 26 were relabeled (title/topics rewritten in
+`course.ts`) to match what their videos actually cover, per the user's resolution choice
+each time — see below. Always pull and read the transcript before trusting a
+`notebookVideos` title-to-day assignment or writing a lesson's `title`/`topics` from it —
+don't assume Clase N ≈ Día N, and don't assume a video finishes the topic it starts. When
+a mismatch surfaces, ask the user how they want it resolved (there's no single correct
+default: past sessions have both relabeled the day to match the video's real content, and
+kept the naive 1:1 numbering with a documented caveat).
 
 ## Commands
 
@@ -197,6 +208,14 @@ streamlit run app.py     # http://localhost:8501
     be pre-filled as the `<textarea>`'s literal content (not just its `placeholder`) so it
     shows by default before any localStorage note overrides it; the diagram goes below
     that text, inside the same `<div class="notes-field">`.
+  - **Supplementary tables**: when a branch's content is an enumerated classification or
+    checklist the professor recaps as a list (e.g. "siete calificaciones jurídicas de...")
+    rather than a step-by-step mechanism, use a plain HTML `<table>` instead of forcing it
+    into an SVG diagram — add a `.quali-table`-style block (see Clase 26's mind map for the
+    reference markup: a `.quali-table-wrap` bordered container, a `<caption>`, and
+    `qnum`/`qname` columns) rather than reusing the diagram's SVG vocabulary. It goes in the
+    same place as a diagram would: inside that branch's `<div class="notes-field">`, right
+    after the `<textarea>`, wrapped in its own `<figure>` with a `<figcaption>`.
 - `streamlit_app/sources.py` holds a static, hand-maintained copy of the notebook's
   source list (id + title) pulled via `notebook_get`; `streamlit_app/app.py` renders it
   as a searchable/filterable table. Regenerate `sources.py` by re-running `notebook_get`
