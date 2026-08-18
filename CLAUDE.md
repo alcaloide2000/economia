@@ -66,6 +66,17 @@ a mismatch surfaces, ask the user how they want it resolved (there's no single c
 default: past sessions have both relabeled the day to match the video's real content, and
 kept the naive 1:1 numbering with a documented caveat).
 
+The drift isn't monotonic, though. Clase 27 broke the streak: it lines up cleanly with
+Día 27's own topic (la teoría del capital) start to finish, no relabeling needed. Clase 28
+mostly confirms this — its content matches Día 28's "la tasa o tipo de interés" as the
+core topic throughout — but isn't a clean 1:1 either: the back half of the class runs into
+Día 29's own material (estructura productiva, renta bruta y neta, crítica a la
+contabilidad nacional) without finishing it, explicitly deferring Teoría Austríaca del
+Ciclo Económico to "el jueves" (the next class). Since Día 28 was already the right day,
+it wasn't relabeled — only its `topics` text was expanded to cover everything the video
+actually teaches. Moral: don't assume the 24-26 lag pattern continues indefinitely either;
+check each new transcript on its own terms.
+
 ## Commands
 
 ```
@@ -191,6 +202,15 @@ streamlit run app.py     # http://localhost:8501
   - If a `notebookVideos` entry has no `url`, don't guess one (searches for the exact
     title often surface nothing, or the wrong video) — ask the user for it rather than
     fabricating a YouTube link.
+  - **Book reference images**: if the user drops a photo/scan of a figure from the course
+    textbook into the repo (an untracked `src/*.png` sitting alongside course.ts, not
+    referenced from any component) while a lesson's map is in progress, check it before
+    finalizing any diagram that covers the same content — the professor's own book graphic
+    with exact figures (e.g. Clase 28's "Gráfico V-2", giving precise before/after profit
+    numbers for a saving-shock example) is more authoritative than a synthesized
+    illustrative example built from the transcript alone, and should replace or supplement
+    it. These images are reference input only, not repo content — leave them
+    untracked/uncommitted unless the user says otherwise.
   - **Supplementary process diagrams**: when a branch's mechanism is a step-by-step
     process (an auction, a negotiation, a market-clearing calculation) that prose or a
     static leaf node can't make legible, add a dedicated inline-SVG diagram — reuse the
