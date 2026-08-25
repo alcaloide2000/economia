@@ -194,11 +194,28 @@ streamlit run app.py     # http://localhost:8501
     midpoint — there's no auto-layout. When editing an *existing* map, fetch its current
     HTML first via `WebFetch` on the artifact URL (it returns the raw source, not a
     markdown summary, for `claude.ai/code/artifact/*` URLs) rather than rebuilding from
-    scratch, since maps may already carry hand-authored content or a notes feature.
+    scratch, since maps may already carry hand-authored content or a notes feature. The
+    fetched HTML is the *served* page, not the authored source: it's wrapped in an
+    injected `<!-- frame-runtime -->` preamble script plus `<html>/<head>/<body>` tags
+    that the Artifact viewer adds at serve time. Before editing or republishing, slice out
+    only the authored content — from the `<title>` tag through the trailing notes
+    `<script>…</script>` block — since the `Artifact` tool wraps whatever file you publish
+    in its own `<!doctype html>…<body>` skeleton; republishing the fetched HTML verbatim
+    would double-wrap it.
   - Every map also carries a "Tus notas, rama por rama" section: one `<textarea>` per
-    branch, auto-saved to `localStorage` under a `economia-clase{N}-mindmap-notes-`
-    prefix (see any existing mind map's trailing `<script>` for the exact snippet — it's
-    copied verbatim across lessons, just swapping the storage prefix and branch keys).
+    branch (not per individual leaf node), auto-saved to `localStorage` under a
+    `economia-clase{N}-mindmap-notes-` prefix (see any existing mind map's trailing
+    `<script>` for the exact snippet — it's copied verbatim across lessons, just swapping
+    the storage prefix and branch keys). When the user asks for "more context" on text
+    quoted from a specific leaf node (or pastes a timestamped transcript excerpt, e.g.
+    `26:56 ... 27:08`), don't resize the main SVG map — re-pull that lesson's transcript,
+    find the fuller passage the quote is drawn from, and extend *that node's parent
+    branch's* shared textarea instead: append a new numbered point (renumbering the rest)
+    grounded in what the transcript actually says, and add or extend that branch's
+    supplementary diagram if the new content is numeric/mechanistic enough to warrant one.
+    If the user supplies a video timestamp, cite it inline in the note text as
+    `(min. MM:SS-MM:SS)`, the same way book citations cite a page number — it's a second,
+    independent precision anchor alongside `página N` citations, not a replacement.
   - If a `notebookVideos` entry has no `url`, don't guess one (searches for the exact
     title often surface nothing, or the wrong video) — ask the user for it rather than
     fabricating a YouTube link.
