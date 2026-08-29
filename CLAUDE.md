@@ -63,8 +63,10 @@ each time — see below. Always pull and read the transcript before trusting a
 `notebookVideos` title-to-day assignment or writing a lesson's `title`/`topics` from it —
 don't assume Clase N ≈ Día N, and don't assume a video finishes the topic it starts. When
 a mismatch surfaces, ask the user how they want it resolved (there's no single correct
-default: past sessions have both relabeled the day to match the video's real content, and
-kept the naive 1:1 numbering with a documented caveat).
+default: past sessions have relabeled the day to match the video's real content, kept the
+naive 1:1 numbering with a documented caveat, and — for Clase 32, see below — kept the
+naive numbering while rewriting that day's `title`/`topics` to describe what the video
+actually teaches).
 
 The drift isn't monotonic, though. Clase 27 broke the streak: it lines up cleanly with
 Día 27's own topic (la teoría del capital) start to finish, no relabeling needed. Clase 28
@@ -76,6 +78,17 @@ Ciclo Económico to "el jueves" (the next class). Since Día 28 was already the 
 it wasn't relabeled — only its `topics` text was expanded to cover everything the video
 actually teaches. Moral: don't assume the 24-26 lag pattern continues indefinitely either;
 check each new transcript on its own terms.
+
+Clase 32 is a different kind of mismatch again: its content doesn't lag by one day, it
+skips a day entirely — the video never touches Día 32's printed topic (propuesta de
+reforma bancaria, coeficiente de caja del 100%) at all. Instead it covers Día 33's topic
+(el precio de los factores de producción, VDPM, trabajo y salarios, crítica a la
+legislación laboral) start to finish, plus part of Día 34's material (revolución
+industrial, factor tierra). The user's resolution this time was the third option: keep
+the naive Clase 32 ≈ Día 32 numbering, but rewrite Día 32's `title`/`topics` in
+`course.ts` to describe what the video actually teaches, dropping the old "reforma
+bancaria" text rather than trying to relocate it elsewhere. Worth checking Día 33's own
+video, whenever it turns up, in case its content has similarly shifted forward.
 
 ## Commands
 
