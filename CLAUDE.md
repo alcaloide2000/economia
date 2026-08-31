@@ -90,6 +90,25 @@ the naive Clase 32 ≈ Día 32 numbering, but rewrite Día 32's `title`/`topics`
 bancaria" text rather than trying to relocate it elsewhere. Worth checking Día 33's own
 video, whenever it turns up, in case its content has similarly shifted forward.
 
+Día 33's video (Clase 33) confirmed that suspicion, and pushed the skip one step further.
+It opens with the professor explicitly recapping what Clase 32 already covered (VDPM,
+factor trabajo, revolución industrial, factor tierra) and then says "ahora vamos a dar un
+paso más" — never touching Día 33's own printed topic at all. Instead it covers two
+institutional topics: (1) externalidades positivas y negativas, argued as a failure of
+undefined/undefended property rights rather than a market failure (pollution, tragedy of
+the commons, public goods/free-rider, solved via privatization — lighthouses, barbed
+wire, private game reserves) — the back half of Día 34's own topic list ("Externalidades");
+and (2) the full Ley-en-sentido-material vs. mandato distinction (abstract general rules
+vs. specific commands, spontaneous vs. hierarchical order, peace vs. conflict, traditional
+justice vs. "justicia social", sociedad abierta vs. cerrada) — a near-exact match for all
+of Día 35's topic. The user's resolution followed the same pattern as Clase 32: keep the
+naive Clase 33 ≈ Día 33 numbering, but rewrite Día 33's `title`/`topics` in `course.ts` to
+describe what the video actually teaches (externalidades + ley vs. mandato), dropping the
+old VDPM/salarios text since Clase 32 already fully covers that. Día 34 and Día 35 still
+have no `notebookVideos` of their own and their printed topics haven't been touched, so
+their own future videos (whenever found) may well cover less than their titles promise,
+or overlap with what Clase 33 already taught — check each on its own terms as usual.
+
 ## Commands
 
 ```
