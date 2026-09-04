@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A Next.js (App Router, TypeScript) site that organizes the material for Jesús Huerta
 de Soto's "Introducción a la Economía" course (Austrian School economics, Universidad
-Rey Juan Carlos). It renders a structured syllabus (43 daily lessons grouped into the
+Rey Juan Carlos). It renders a structured syllabus (43 dI have addedaily lessons grouped into the
 course's 7 "Parte" sections in the underlying data — see below) and a materials list.
 
 The course content — the full syllabus, lecture-video titles, and PDF references — was
@@ -108,6 +108,24 @@ old VDPM/salarios text since Clase 32 already fully covers that. Día 34 and Dí
 have no `notebookVideos` of their own and their printed topics haven't been touched, so
 their own future videos (whenever found) may well cover less than their titles promise,
 or overlap with what Clase 33 already taught — check each on its own terms as usual.
+
+Clase 34 pushed the skip further still — not by one day this time, but by two. Its
+content doesn't touch Día 34's printed topic (Historia y política: beneficios de la
+Revolución Industrial, el odio al capitalismo, factor tierra) at all; instead it's a
+clean, complete lecture matching Día 36's own topic ("El socialismo") almost word for
+word: redefining socialism/estatismo as institutional aggression against the free
+exercise of the entrepreneurial function, the four reasons the socialist ideal is
+scientifically impossible (information volume, the tacit/non-articulable nature of
+entrepreneurial knowledge, its continuous change, and coercion itself blocking the
+information the planner needs — the "paradoja del estatismo"), and the consequences
+(social discoordination, corruption, degraded law/justice). The professor explicitly
+defers "los diferentes tipos de socialismo" (Día 37's territory) to the next class, so
+it doesn't bleed forward. The user's resolution this time was the same pattern as Clase
+32/33 — keep the naive Clase 34 ≈ Día 34 numbering, but rewrite Día 34's `title`/`topics`
+in `course.ts` to describe what the video actually teaches — even though this leaves
+Día 34 and Día 36 carrying near-duplicate "why socialism can't work" content until
+Día 36 gets its own video (whenever that surfaces, check it on its own terms too, same
+as always).
 
 ## Commands
 
