@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A Next.js (App Router, TypeScript) site that organizes the material for Jesús Huerta
 de Soto's "Introducción a la Economía" course (Austrian School economics, Universidad
-Rey Juan Carlos). It renders a structured syllabus (43 dI have addedaily lessons grouped into the
+Rey Juan Carlos). It renders a structured syllabus (43 daily lessons grouped into the
 course's 7 "Parte" sections in the underlying data — see below) and a materials list.
 
 The course content — the full syllabus, lecture-video titles, and PDF references — was
@@ -126,6 +126,26 @@ in `course.ts` to describe what the video actually teaches — even though this 
 Día 34 and Día 36 carrying near-duplicate "why socialism can't work" content until
 Día 36 gets its own video (whenever that surfaces, check it on its own terms too, same
 as always).
+
+Clase 34's own prediction held: Clase 35 delivers exactly the "diferentes tipos de
+socialismo" lecture it deferred, confirming the skip pattern lands on Día 37's printed
+topic rather than Día 35's own (already fully covered by Clase 33's ley-vs-mandato
+material). After a brief opening Q&A on the 100%-reserve banking reform, the professor
+explicitly announces "vamos a explicar los diferentes tipos o clases de socialismo" and
+delivers a full taxonomy: socialismo real/soviético (with the China/Chicago
+commodities-market anecdote), socialdemocracia, socialismo cientificista/ingeniería
+social, socialismo cristiano-solidario and teología de la liberación, and socialismo
+sindicalista (Yugoslavia) — then closes with a retrospective on how his own definition
+of socialism evolved (Mises's static property-based definition → Hoppe's dynamic
+aggression-against-property-rights definition → his own aggression-against-the-
+entrepreneurial-function redefinition). The user's resolution was the same pattern as
+Clase 32/33/34: keep the naive Clase 35 ≈ Día 35 numbering, but rewrite Día 35's
+`title`/`topics` in `course.ts` to describe what the video actually teaches, dropping the
+old "leyes, mandatos y orden social" text since Clase 33 already covers it. Día 37 keeps
+its own "Diferentes clases de socialismo" title/topics untouched and still has no
+`notebookVideos` of its own — its future video, whenever found, may well cover
+something else entirely by this point, so check it fresh rather than assuming the skip
+pattern continues at the same offset.
 
 ## Commands
 
