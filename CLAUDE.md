@@ -147,6 +147,33 @@ its own "Diferentes clases de socialismo" title/topics untouched and still has n
 something else entirely by this point, so check it fresh rather than assuming the skip
 pattern continues at the same offset.
 
+Clase 36 broke the naive-numbering pattern in a new way: not a content drift within the
+same course "Parte", but a jump to an entirely different, later official part. It opens
+with the professor explicitly announcing "hoy comenzamos una parte nueva... dedicada al
+mercado intervenido" — i.e. it's the opening lecture of "Sexta Parte: El Mercado
+Intervenido", not Día 36's own printed topic ("El socialismo", which belongs to "Quinta
+Parte: La Cooperación Social en Ausencia del Mercado" and was already fully covered by
+Clase 34/35's content). The lecture covers, in order: a unified definition of
+intervencionismo as a partial manifestation of estatismo (every coercive measure is
+self-frustrating; interventionism is inherently unstable); direct intervention in
+consumption (drug/alcohol prohibition, black markets, mafias, blocked social learning) —
+matching Día 37's own topic; the corruption interventionism generates, both
+institutionally and in individual behavior; fiscal interventionism (which taxes are most
+harmful, Reagan/Thatcher tax cuts); restrictionism (tariffs/protectionism, minimum wage);
+and a brief teaser on maximum/minimum price controls "para el jueves" — this middle and
+tail material matches Día 39's topics almost exactly ("Intervencionismo fiscal y
+restricción de la producción (aranceles). Intervención de precios"), effectively
+skipping over Día 38 (an unnumbered, off-syllabus "Conferencia fuera del programa" day).
+Given the content belongs structurally to a different, later "Parte" than the one Día 36
+sits in, the user's resolution this time went a step further than the title/topics-only
+rewrites used for Clase 32-35: keep the naive Clase 36 ≈ Día 36 day-number pairing, but
+physically move that lesson entry out of "Quinta Parte" (now left with an empty
+`lessons: []`, so its heading is hidden from the temario like any other video-less
+section) into "Sexta Parte: El Mercado Intervenido", positioned before Día 37, with
+`title`/`topics` rewritten to describe the actual intervencionismo content. Worth
+checking whatever video eventually surfaces for Día 37 (and Día 39) on its own terms,
+since this class already covers a good chunk of both.
+
 ## Commands
 
 ```

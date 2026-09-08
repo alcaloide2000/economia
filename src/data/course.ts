@@ -98,13 +98,12 @@ export const courseParts: CoursePart[] = [
   },
   {
     title: "Quinta Parte: La Cooperación Social en Ausencia del Mercado",
-    lessons: [
-      { day: 36, title: "El socialismo", topics: "Definición como error intelectual. Imposibilidad del cálculo económico. Consecuencias teóricas (desorden, corrupción).", companionUrl: companionUrl(36) },
-    ],
+    lessons: [],
   },
   {
     title: "Sexta Parte: El Mercado Intervenido",
     lessons: [
+      { day: 36, title: "El intervencionismo: consumo, corrupción, fiscalidad y restricción", topics: "Definición unitaria del intervencionismo como manifestación parcial del estatismo: toda medida coactiva del Estado sobre el cuerpo social es contraproducente (autofrustrante) y el intervencionismo es esencialmente inestable. La intervención directa en el consumo: prohibicionismo de drogas y alcohol (ley seca), mercado negro, mafias y criminalización, bloqueo del aprendizaje social del consumo responsable. La corrupción generada por el intervencionismo, a nivel institucional y en el comportamiento individual. El intervencionismo fiscal: impuestos más y menos dañinos (patrimonio, renta progresiva, renta proporcional, capitación), la curva de Laffer aplicada y los recortes fiscales de Reagan y Thatcher. El restriccionismo: aranceles y proteccionismo, y el salario mínimo como medida restrictiva. Introducción a la fijación de precios máximos y mínimos.", companionUrl: companionUrl(36), notebookVideos: [{ title: "Clase 36. EL ESTADO NO ES TU AMIGO: así destruye tu vida el intervencionismo (el virus más letal)", url: "https://www.youtube.com/watch?v=gHuTKZygGcI" }], mindMapUrl: "https://claude.ai/code/artifact/a215b2d0-9e1a-452d-ab34-81011f2b90f1" },
       { day: 37, title: "Diferentes clases de socialismo", topics: "Crítica de conceptos idílicos. El mercado intervenido y la coacción sobre el consumo.", companionUrl: companionUrl(37) },
       { day: 38, title: "Conferencia fuera del programa del curso", topics: "Sesión adicional no numerada dentro del temario oficial.", companionUrl: companionUrl(38) },
       { day: 39, title: "De la corrupción", topics: "Intervencionismo fiscal y restricción de la producción (aranceles). Intervención de precios (máximos y mínimos).", companionUrl: companionUrl(39) },
