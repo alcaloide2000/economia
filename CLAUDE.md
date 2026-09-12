@@ -174,6 +174,42 @@ section) into "Sexta Parte: El Mercado Intervenido", positioned before Día 37, 
 checking whatever video eventually surfaces for Día 37 (and Día 39) on its own terms,
 since this class already covers a good chunk of both.
 
+Clase 37 confirmed the first half of that prediction: it's the direct continuation of
+the price-controls teaser Clase 36 ended on, and never touches Día 37's own printed
+topic ("Diferentes clases de socialismo," already fully covered by Clase 35). The whole
+class is one extended treatment of precios máximos y mínimos — the same mechanism from
+both directions (a ceiling favoring consumers, a floor favoring producers), the static
+shortage/surplus effects and the ad-hoc allocation systems a price ceiling provokes
+(queues, rationing cards, favoritism, violence), the Austrian dynamic argument that free
+prices are what mobilize entrepreneurial adaptation on both sides of the market, and a
+run of historical illustrations (postwar Spain's rationing and black market, the fall of
+Rome, Erhard's 1948 abolition of price controls in Germany, EU agricultural surpluses,
+Spanish rent control, Venezuela). That content is really the tail of Día 39's own topic
+list ("Intervención de precios (máximos y mínimos)"), not Día 37's — the same kind of
+forward skip as Clase 32-36. The user's resolution was the same pattern as those: keep
+the naive Clase 37 ≈ Día 37 numbering, but rewrite Día 37's `title`/`topics` in
+`course.ts` to describe what the video actually teaches, dropping the old "socialismo"
+text since Clase 35 already covers it. Día 39 keeps its own topic list untouched and
+still has no `notebookVideos` of its own — check its future video fresh, same as always,
+since this class already covers most of what it promises.
+
+Clase 38 exposed a different kind of problem: Día 38 wasn't a content-drift mismatch at
+all, it was a placeholder ("Conferencia fuera del programa del curso") that had never
+actually been checked against a transcript, and turned out to be wrong — the video is a
+real, on-programme lecture, not an off-syllabus extra like Día 41. Its content (a quick
+recap of the intervention measures already covered, then sindicalismo y corporativismo,
+relaciones internacionales/proteccionismo, a brief note on economía de guerra, ayuda a
+países subdesarrollados y la política del hambre, and an extended treatment of the
+Public Choice critique of democracy) matches Día 40's own topic list almost exactly,
+short of Crisis de la Seguridad Social and economía española, which the professor
+explicitly defers to the next class. Given the choice between moving the lesson
+structurally into Séptima Parte (the Clase 36 pattern) or rewriting it in place, the
+user chose to keep it simple: Día 38 stays at its naive position in Sexta Parte, with
+`title`/`topics` rewritten from the transcript rather than left as an unverified
+placeholder. Día 39 and Día 40 keep their own topic lists untouched and still have no
+`notebookVideos` of their own — both are likely to arrive further preempted than usual
+once their own videos surface, so check each on its own terms as always.
+
 ## Commands
 
 ```
