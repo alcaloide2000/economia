@@ -210,6 +210,32 @@ placeholder. Día 39 and Día 40 keep their own topic lists untouched and still 
 `notebookVideos` of their own — both are likely to arrive further preempted than usual
 once their own videos surface, so check each on its own terms as always.
 
+Clase 39 confirmed that prediction and, like Día 38 before it, exposed that Día 39's own
+placeholder ("De la corrupción", with aranceles/precios topics already covered by earlier
+classes) had never actually been checked against a transcript either. The video opens with
+the professor's roadmap for the rest of the course, then explicitly frames the day's content
+as closing the intervencionismo block with the public pension system (tema 60, Seguridad
+Social) as the chosen case study — one of the Estado del Bienestar's three "legs" (pensiones,
+educación, sanidad) — followed by closing conclusions on intervencionismo itself (tema 61).
+It covers the technical problems of the reparto/pay-as-you-go system (false substitute for
+saving, the aging population and falling birth rate collapsing the worker-to-retiree ratio
+from 6:1 in 1964 to 2:1 today, the fiction that employers pay part of the contribution when
+workers bear it entirely, and an actuarial imbalance the professor explicitly likens to a
+pyramid scheme), the ethical problems (a fictitious "social contract," no real guarantees,
+outdated Bismarckian paternalism), his reform proposal (splitting social assistance from
+genuine retirement saving, moving to a capitalization system as Chile and the UK did,
+funding the transition via his 100%-reserve banking reform), and closes with Mises's
+conclusion that interventionism is inherently unstable — tending toward full socialism or a
+course correction like Argentina's — plus an extended reflection on why the public doesn't
+revolt despite the evidence. None of this is Día 39's placeholder topic, but it does belong
+structurally where Día 39 already sits (Sexta Parte, as the closing lecture on
+intervencionismo), so the resolution followed the Clase 38 pattern: keep the naive Clase 39
+≈ Día 39 numbering, rewrite Día 39's `title`/`topics` in `course.ts` from the transcript.
+Día 40 (Séptima Parte) keeps its own topic list untouched and still has no `notebookVideos`
+of its own, and its "Crisis de la Seguridad Social" topic is now mostly already covered by
+Clase 39 — check its future video fresh, same as always, since it may well be preempted
+further still.
+
 ## Commands
 
 ```
