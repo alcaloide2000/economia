@@ -236,6 +236,126 @@ of its own, and its "Crisis de la Seguridad Social" topic is now mostly already 
 Clase 39 — check its future video fresh, same as always, since it may well be preempted
 further still.
 
+Clase 40 confirmed that Día 40's placeholder was wrong too, in the same way Día 38 and
+39's turned out to be before their own videos arrived. The video never touches Día 40's
+printed topic (sindicalismo y corporativismo, Public Choice) at all; instead the
+professor opens by explicitly naming the day's three textbook temas — 65 (la economía
+española), 66 (la Unión Europea) and 67 (teoría económica del nacionalismo y la
+inmigración) — and closes by starting, but deliberately not finishing, the critique of
+the Marxist/Rodbertus theory of exploitation, promising the full demolition "el jueves".
+Content-wise this lines up almost exactly with Día 42's own topic list (Unión Europea,
+nacionalismo/inmigración, crítica de la teoría de la explotación), skipping clean over
+Día 40 and Día 41 — the same kind of forward skip as Clase 32-39, just a bigger jump.
+The user's resolution was the same pattern as those: keep the naive Clase 40 ≈ Día 40
+numbering, but rewrite Día 40's `title`/`topics` in `course.ts` to describe what the
+video actually teaches (historia y apertura de la economía española, origen liberal y
+deriva intervencionista de la Unión Europea, los cuatro principios del nacionalismo
+liberal, e introducción a la crítica de la teoría de la explotación), dropping the old
+sindicalismo/Public Choice text since Clase 38 already covers that ground. Día 41 (still
+the unverified "Conferencia no incluida en el programa" placeholder) and Día 42 (whose
+own topic list is now mostly already covered by Clase 40) both still have no
+`notebookVideos` of their own — check each fresh against its own future video, same as
+always, since either may turn out preempted or mislabeled in turn.
+
+Clase 41 first got misidentified because of a tooling mistake, not a content mismatch —
+worth recording since it's a trap the same command shape will spring again. When hunting
+for its source in the notebook, a first pass piped `nlm source list <id> --json` through
+`grep -i "41"` and eyeballed which `"id"` line sat next to which `"title"` line in the
+filtered output. That's unsound: grep drops every non-matching line, so two lines that
+end up adjacent in the output can belong to two different JSON objects whose *own*
+matching substrings just happened to appear nearby (e.g. an id like
+`...b141-ba0a2f727c94` matches `"41"` by coincidence, via the `b141` substring, with no
+relation to Día 41 at all). That pairing pointed at a source whose real title, confirmed
+only by looking it up individually with `nlm source get <id> --json`, was Día 35's own
+video — so the first mind map built for "Clase 41" was actually built from Día 35's own
+transcript, which is exactly why it looked like a word-for-word duplicate of Día 35 (it
+was reading Día 35). The fix: always parse `nlm source list --json` as JSON (e.g. via a
+small Node script) and filter/match on the parsed `title` field, never by grepping raw
+multi-line JSON text and assuming adjacent matching lines share an object.
+
+The real Clase 41 source (id `59d395c8-3c73-4f08-a929-3ed9453f6d9c`) turned out to match
+exactly what Clase 40 had promised for "el jueves": it closes the critique of Rodbertus's
+refined exploitation theory with four arguments, from least to most decisive — a circular-
+reasoning objection (what determines the value of the labor itself?), the existence of
+economic goods (natural resources) that aren't purely a product of labor (illustrated with
+two otherwise-identical wines whose price differs tenfold purely from aging time), the
+subjective (not objective/intrinsic) nature of value, and the definitive argument: because
+production takes time, paying a worker today the full undiscounted value of what they will
+produce once the process matures would be *overpaying* them, not exploiting them — which is
+exactly why almost nobody voluntarily chooses to found a cooperative and wait instead of
+taking an immediate wage. It then walks through Marx's own "innovations" on top of
+Rodbertus — Hegelian dialectical dressing, narrowing the scope to "mercancías" to dodge the
+natural-resources objection, an appeal to Aristotle to claim exchange implies equality
+(when exchange is actually driven by unequal subjective valuations on both sides), the
+concept of plusvalía via unpaid extra hours (feeding the modern labor movement's push for
+shorter hours), polilogismo (dismissing any critic's argument as invalid because of their
+class, race, or other identity — including Mises's rebuttal and the irony of Marx's own
+bourgeois background), and the claimed historical inevitability of socialism and of capital
+concentration — and closes with the acknowledged failure of Das Kapital's third volume
+(where the theory's own defenders resorted to "differences cancel out in aggregate," an
+absurdity even fellow socialists like Sombart and Bernstein conceded), recommending Juan
+Ramón Rallo's El Antimarx for further reading. `course.ts`'s Día 41 `title`/`topics` (and
+the mind map) have been rebuilt from this correct transcript; the earlier "grabación
+adicional, duplicado de la Clase 35" text was wrong and has been discarded entirely, not
+kept as a documented caveat.
+
+Clase 42 turned out not to be a syllabus lecture at all: the transcript opens with "vamos
+a comenzar la clase, la última clase del curso" and its second half is explicitly the
+professor's traditional closing lecture — the "10 consejos para tener éxito en la vida"
+he has delivered at the end of every course since 1984, already represented in the data by
+the separate, currently-unrendered `closingLesson` export (`{title: "Clase de Clausura",
+topics: "10 Consejos para tener éxito en la vida."}`). It shares nothing with Día 42's own
+printed topic (La Unión Europea), which is unrelated and still open. Given the choice
+between wiring the video into `closingLesson` (and reviving its rendering on the schedule
+page) or keeping the naive Clase 42 ≈ Día 42 numbering with rewritten text, the user chose
+the latter, consistent with every other class so far: `course.ts`'s Día 42 `title`/`topics`
+were rewritten from the transcript to describe the ten consejos (entusiasmo, constancia,
+excelencia, no preocuparse indebidamente, aprender inglés, mantenerse informado, equilibrar
+familia/profesión/cultura, la función empresarial, el espíritu crítico y ir siempre a
+contracorriente, y el comportamiento ético), dropping the old "La Unión Europea" text
+entirely — that topic (already mostly covered by Clase 40, per the note above) has no
+video of its own yet and remains unplaced in the syllabus. The `closingLesson` export
+itself was left untouched, still unrendered, still waiting for whatever future resolution
+the user picks if this situation is revisited.
+
+Clase 4 showed that the "Clase N" vs "Día N" drift isn't confined to the later parts of
+the course — this is the first time the gotcha turned up this early, and it had simply
+never been checked before (Día 4's video had been in the data since early on, but nobody
+had read its transcript against the printed topic). It never touches Día 4's own printed
+topic (tiempo, sorpresa, serendipidad, coste, racionalidad, acción humana como axioma) at
+all; instead it defines the entrepreneurial function operatively as an innate alertness to
+profit opportunities (Kirzner's "alertness," the especulador/atalaya metaphor) and then
+develops, in full, Día 5's own topic — "el conocimiento empresarial es ante todo un
+conocimiento subjetivo, práctico y no científico," illustrated with examples (learning to
+ride a bicycle, learning a language, Picasso, the TV economist who can't actually predict
+GDP) — while lightly previewing, but explicitly not developing ("ya lo veremos"), Día 6's
+own topic (el carácter tácito y no articulable, y la idea de Hayek del conocimiento
+disperso). Same pattern as Clases 32-42: the user chose to keep the naive Clase 4 ≈ Día 4
+numbering, rewriting Día 4's `title`/`topics` in `course.ts` to describe what the video
+actually teaches, dropping the old tiempo/sorpresa/coste/racionalidad text entirely. Worth
+treating this as a reminder to check early-course days on their own terms too, rather than
+assuming the gotcha only applies from wherever it was first noticed onward — Días 5 and 6
+in particular may turn out partially preempted by this video when their own transcripts
+(if a separate video exists for each) are eventually checked.
+
+That prediction held immediately: Clase 5 opens by explicitly recapping what Clase 4
+already taught (subjetivo, práctico — the same grandfather anecdote, the same bicycle/
+Velázquez/ligar examples), and then develops, in full, exactly what Día 6's printed topic
+promises: privativo and disperso (Hayek), tácito y no articulable (Polanyi, with examples
+from language and moral norms to scientific discovery), and the three effects of the
+entrepreneurial act (creación, transmisión — prices as compressed signals — and
+coordinación), ending mid-sentence on "coordinación" where the class runs out of time.
+Nothing in it is specific to Día 5's own ground beyond the opening recap. Same resolution
+as Día 4: the user chose to keep the naive Clase 5 ≈ Día 5 numbering, rewriting Día 5's
+`title`/`topics` in `course.ts` to describe the recap-plus-privativo/disperso/tácito/tres-
+efectos content, even though this now duplicates Día 6's own (still separately unverified)
+topic list almost exactly. Note that Día 6 already has its own `notebookVideos` entry
+("Clase 06: Creatividad Empresarial y la Sociedad") that has never been checked against its
+transcript — given the lag pattern here, it likely covers something further ahead than its
+own printed topic (maybe Día 7's ground, or beyond); check it fresh on its own terms,
+same as always, rather than assuming it actually delivers Día 6's topic just because the
+title sounds plausible.
+
 ## Commands
 
 ```
