@@ -61,12 +61,15 @@ to the next class. Both Día 25 and Día 26 were relabeled (title/topics rewritt
 `course.ts`) to match what their videos actually cover, per the user's resolution choice
 each time — see below. Always pull and read the transcript before trusting a
 `notebookVideos` title-to-day assignment or writing a lesson's `title`/`topics` from it —
-don't assume Clase N ≈ Día N, and don't assume a video finishes the topic it starts. When
-a mismatch surfaces, ask the user how they want it resolved (there's no single correct
-default: past sessions have relabeled the day to match the video's real content, kept the
-naive 1:1 numbering with a documented caveat, and — for Clase 32, see below — kept the
-naive numbering while rewriting that day's `title`/`topics` to describe what the video
-actually teaches).
+don't assume Clase N ≈ Día N, and don't assume a video finishes the topic it starts.
+
+**Standing rule (user decision, 2026-09-25): the transcript leads, not the printed
+temario.** Don't ask how to resolve a mismatch anymore: keep the naive Clase N ≈ Día N
+pairing and write that Día's `title`/`topics` (and its mind map) purely from what the
+video actually teaches, ignoring the printed "temario completo" description. Mind maps
+don't need a "Nota sobre la numeración" callout comparing against the printed programme.
+The case-by-case history below records how earlier mismatches were handled before this
+rule existed; it's background, not a procedure to repeat.
 
 The drift isn't monotonic, though. Clase 27 broke the streak: it lines up cleanly with
 Día 27's own topic (la teoría del capital) start to finish, no relabeling needed. Clase 28
@@ -355,6 +358,20 @@ transcript — given the lag pattern here, it likely covers something further ah
 own printed topic (maybe Día 7's ground, or beyond); check it fresh on its own terms,
 same as always, rather than assuming it actually delivers Día 6's topic just because the
 title sounds plausible.
+
+Clase 6 confirmed it: the professor opens by announcing he'll "terminar hoy el tema dos"
+and, after a student question on monopoly (deferred to the end of the course, with a nod
+to Armentano), runs through exactly Día 7's printed topic list — arbitraje y especulación,
+competencia (competitio; the "Big Bang social empresarial" that never stops, illustrated
+with IBM and the personal computer), división del conocimiento (not "del trabajo":
+specialization, population growth as the condition for prosperity, Hayek's "pocos y
+pobres o muchos y ricos", Julian Simon's bet, the 1890s horse-manure panic), creatividad
+versus maximización (physics-style maximization, homo economicus, Robbins), and the
+concepto de sociedad as a spontaneous, highly complex process of human interaction. Only
+Día 7's "derecho, dinero y cálculo económico" and "ubicuidad" items don't appear. Same
+resolution as Días 4 and 5: keep Clase 6 ≈ Día 6, rewrite Día 6's `title`/`topics` from
+the transcript. Día 7's own video ("Clase 07: Dualismo Metodológico y Complejidad Social")
+by its title already sounds like Día 8's epistemology ground — check it fresh.
 
 ## Commands
 
