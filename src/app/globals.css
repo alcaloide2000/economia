@@ -53,97 +53,7 @@ a {
   color: var(--accent-ink);
 }
 
-/* ===== Home page ===== */
-
-.hero {
-  padding: 1rem 0 2.5rem;
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 2.5rem;
-}
-
-.eyebrow {
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 700;
-  margin: 0 0 0.75rem;
-}
-
-.hero h1 {
-  font-size: clamp(2rem, 4.5vw, 2.75rem);
-  margin: 0 0 0.75rem;
-}
-
-.dek {
-  max-width: 60ch;
-  color: var(--ink-soft);
-  margin: 0 0 1.25rem;
-}
-
-.meta-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.pill {
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 0.3rem 0.75rem;
-  font-size: 0.8rem;
-  color: var(--ink-soft);
-}
-
-.cta-link {
-  display: inline-block;
-  font-weight: 600;
-  color: var(--accent-ink);
-  text-decoration: underline;
-  text-decoration-color: var(--line);
-  text-underline-offset: 3px;
-}
-
-.mindmaps {
-  margin-bottom: 3rem;
-}
-
-.mindmaps h2 {
-  margin: 0 0 0.4rem;
-}
-
-.section-hint {
-  color: var(--ink-soft);
-  font-size: 0.9rem;
-  margin: 0 0 1.5rem;
-  max-width: 60ch;
-}
-
-.mindmap-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1rem;
-}
-
-.mindmap-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  background: var(--bg-raised);
-  border: 1px solid var(--line);
-  border-left: 3px solid var(--accent);
-  border-radius: 12px;
-  padding: 1rem 1.1rem;
-  text-decoration: none;
-  color: inherit;
-  transition: border-color 0.15s ease, transform 0.15s ease;
-}
-
-.mindmap-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-1px);
-}
+/* ===== Temario (home page) ===== */
 
 .day-badge {
   display: inline-block;
@@ -158,70 +68,22 @@ a {
   padding: 0.15rem 0.5rem;
 }
 
-.mindmap-card h3 {
-  margin: 0;
-  font-size: 1.02rem;
-  color: var(--ink);
-}
-
-.mindmap-card p {
-  margin: 0;
-  font-size: 0.85rem;
-  color: var(--ink-soft);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.card-cta {
-  margin-top: auto;
-  padding-top: 0.4rem;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--accent-ink);
-}
-
-.materials h2 {
-  margin: 0 0 1rem;
-}
-
-.materials-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.materials-list li {
-  background: var(--bg-raised);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 0.8rem 1rem;
-  font-size: 0.9rem;
-  color: var(--ink-soft);
-}
-
-.materials-list a {
-  color: var(--accent-ink);
-  text-decoration: underline;
-  text-decoration-color: var(--line);
-}
-
-.materials-list strong {
-  color: var(--ink);
-}
-
-/* ===== Schedule page ===== */
-
 .schedule-header {
   margin-bottom: 2.5rem;
 }
 
 .schedule-header h1 {
   margin: 0.75rem 0 0;
+}
+
+.schedule-subtitle {
+  margin: 0.35rem 0 0;
+  color: var(--ink-soft);
+}
+
+.general-map-link {
+  display: inline-block;
+  margin-top: 0.9rem;
 }
 
 .part {

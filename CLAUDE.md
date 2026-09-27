@@ -407,18 +407,24 @@ streamlit run app.py     # http://localhost:8501
 ## Architecture
 
 - `src/data/course.ts` is the single source of truth for course content: `courseParts`
-  (array of `{ title, lessons[], alwaysShow? }`). Most parts are the 7 numbered "Parte"
-  sections of the official syllabus, but there are also a few unofficial, un-numbered
-  divider sections (e.g. "Introducción a la Microeconomía y Complementos" at Día 1,
-  "Dinero y Ciclos Económicos" at Día 21) used when a run of days doesn't belong to any
-  of the 7 official parts — don't invent a "Quinta Parte:"-style ordinal for one of these
-  unless it's actually the next real part in sequence, since the numbered ordinals are
-  already used further down the syllabus. A lesson is filed under whichever part it
+  (array of `{ title, lessons[], alwaysShow? }`). The course is titled "Acción Humana"
+  (`courseTitle`, shown as the page's h1). On 2026-09-27 the user replaced the official
+  syllabus's 7 "Parte" sections with their own 9 parts, titled "Parte N: …" and grouped
+  by video: 1 acción humana y función empresarial (Días 1–6), 2 dualismo metodológico,
+  racionalismo y polilogismo (7–11), 3 la acción en el marco de la sociedad (11 bis–12),
+  4 cálculo económico (13), 5 cataláctica (14–20), 6 macroeconomía y dinero (21–33),
+  7 socialismo o estatismo (34–35), 8 mercado intervenido (36–39), 9 comentarios finales:
+  España, UE y Marx (40–43). `generalMindMapUrl` (linked under the page header) is a
+  published overview map of these 9 parts, with every class leaf linking to its own map.
+  It is generated from `course.ts` by a Node script, not written by hand, so regenerate
+  and republish it when a part, title or `mindMapUrl` changes. Keep this grouping unless the user changes it; mentions
+  of "Quinta Parte", "Sexta Parte" and so on in the history notes above refer to the old
+  official parts. A lesson is filed under whichever part it
   thematically belongs to, which is not always the part its `day` number would suggest if
   the video's actual content runs ahead of or behind the printed programme — check the
   transcript, not just the day number, before trusting a lesson's placement or `topics`
   text (see the "Clase N" vs "Día N" gotcha above). `alwaysShow: true` on a part makes
-  `schedule/page.tsx` render that part's heading even when none of its lessons have a
+  `src/app/page.tsx` render that part's heading even when none of its lessons have a
   `notebookVideos` entry yet — used for a just-created divider section whose days don't
   have videos yet, so the heading isn't silently hidden along with them. Each lesson has
   `day`, `title`, `topics`, an optional `companionUrl` pointing at the per-day video index
@@ -427,31 +433,32 @@ streamlit run app.py     # http://localhost:8501
   recording already saved as a source in the NotebookLM notebook for that day — a day
   can have more than one, e.g. a "bis"/supplementary recording alongside the main
   class), and an optional `mindMapUrl` pointing at a published mind-map Artifact for
-  that lesson. `course.ts` also exports `closingLesson` (the course's closing lecture)
-  and `courseMaterials` (the PDFs and extra videos in the notebook that aren't tied to a
-  single day); `closingLesson` is no longer rendered by `schedule/page.tsx` (removed
-  along with the `companionUrl` per-lesson link) but is left in the data in case it's
-  wanted again.
-- `src/app/schedule/page.tsx` only renders lessons that have at least one entry in
+  that lesson. A supplementary recording can instead be split into its own lesson with the
+  same `day` plus a `dayLabel` (Día 11 and Día 11 bis each have their own video and mind
+  map); the temario renders `Día {dayLabel ?? day}` and keys cards by it. `course.ts` also
+  exports `closingLesson` (the course's closing lecture) and `courseMaterials` (the PDFs
+  and extra videos in the notebook that aren't tied to a single day); neither is rendered
+  anywhere now, but both are left in the data in case they're wanted again.
+- The site is a single page: `src/app/page.tsx` (at `/`) is the "Temario completo". The
+  old course-overview home page (header, mind-map card grid, materials list) was removed
+  at the user's request, and `src/app/schedule/page.tsx` now only redirects `/schedule` to
+  `/` so old links keep working. The temario only renders lessons that have at least one entry in
   `notebookVideos` — days without a saved NotebookLM source (or whole course parts made
   up entirely of such days, unless `alwaysShow` is set) are hidden from the temario. For
   each rendered lesson it shows the `notebookVideos` links and the `mindMapUrl` link, if
   set; it does not render `companionUrl` or `closingLesson`. Each lesson renders as a
   `.lesson-card` article with a `Día N` `.day-badge`; the card gets the `has-mindmap`
   class (a gold left-border accent) when `lesson.mindMapUrl` is set, so mapped days stand
-  out at a glance while scanning the temario. `src/app/page.tsx` is the overview/home
-  page — besides the course header/materials, it renders a `.mindmap-grid` of cards (one
-  per lesson with a `mindMapUrl`, flattened across all `courseParts` and sorted by `day`)
-  linking straight out to every published mind map, so new maps just need `mindMapUrl`
-  set on their lesson to appear there automatically.
-- The site's visual design (home and schedule pages) intentionally mirrors the mind-map
+  out at a glance while scanning the temario. New maps just need `mindMapUrl` set on
+  their lesson to appear there automatically.
+- The site's visual design (the temario page) intentionally mirrors the mind-map
   Artifacts' own look: a cream/ink palette with a gold `--accent`, serif headings
   (`"Iowan Old Style", "Palatino Linotype", Palatino, Georgia`), and card-based layouts.
   The palette lives as CSS custom properties in `src/app/globals.css` (`--bg`,
   `--bg-raised`, `--ink`, `--ink-soft`, `--line`, `--accent`, `--accent-soft`,
   `--accent-ink`), redefined under `@media (prefers-color-scheme: dark)` — there's no
   light/dark toggle, just OS preference. Keep new UI on these pages built from the
-  existing token/class vocabulary (`.pill`, `.cta-link`, `.day-badge`, card classes) for
+  existing token/class vocabulary (`.day-badge`, `.lesson-card`, `.part`) for
   visual consistency rather than one-off colors, and reuse the same palette instinct if a
   mind map's own gold/citation accent color ever needs to change — the two are meant to
   stay recognizably related.
@@ -537,10 +544,17 @@ streamlit run app.py     # http://localhost:8501
     numbers the professor actually states — where the transcript only gives a count or a
     direction ("cinco vendedores más, piden menos de 200") without individual figures,
     say exactly that in a muted schematic callout instead of inventing precise numbers to
-    fill out the picture. A written outline for the same branch (if one was produced) can
-    be pre-filled as the `<textarea>`'s literal content (not just its `placeholder`) so it
-    shows by default before any localStorage note overrides it; the diagram goes below
-    that text, inside the same `<div class="notes-field">`.
+    fill out the picture. A written outline for the same branch (if one was produced) goes
+    in a fixed `<div class="notes-outline">` placed right before that branch's `<textarea>`,
+    never as the textarea's content: the textarea always starts empty so that only the
+    user's own typed notes live there, rendered in the branch colour
+    (`color: var(--branch-accent)`), while the outline stays in normal ink. Every map
+    carries the same `.notes-outline` / coloured-textarea CSS block (copy it from any
+    existing map). The diagram goes below the textarea, inside the same
+    `<div class="notes-field">`, and every diagram or table `<figure>` there is followed by
+    its own empty `<textarea class="fig-notes" data-fig-notes-key="{branchKey}-fig{n}">` +
+    `<span class="notes-status" data-fig-status>` note box, saved under the same storage
+    prefix by a separate small script at the end of the page (copy it from any map).
   - **Supplementary tables**: when a branch's content is an enumerated classification or
     checklist the professor recaps as a list (e.g. "siete calificaciones jurídicas de...")
     rather than a step-by-step mechanism, use a plain HTML `<table>` instead of forcing it

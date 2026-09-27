@@ -1,69 +1,54 @@
-import Link from "next/link";
-import { courseTitle, courseProfessor, courseSource, courseParts, courseMaterials } from "@/data/course";
+import { courseParts, courseTitle, generalMindMapUrl } from "@/data/course";
 
 export default function Home() {
-  const totalLessons = courseParts.reduce((sum, part) => sum + part.lessons.length, 0);
-  const mindMapLessons = courseParts
-    .flatMap((part) => part.lessons)
-    .filter((lesson) => lesson.mindMapUrl)
-    .sort((a, b) => a.day - b.day);
-
   return (
     <main>
-      <div className="hero">
-        <p className="eyebrow">Universidad Rey Juan Carlos · Guía Docente al Curso por Internet</p>
+      <div className="schedule-header">
         <h1>{courseTitle}</h1>
-        <p className="dek">
-          Profesor <strong>{courseProfessor}</strong> — {courseSource}
-        </p>
-        <div className="meta-pills">
-          <span className="pill">{courseParts.length} partes</span>
-          <span className="pill">{totalLessons} días de clase</span>
-          <span className="pill">{courseMaterials.length} materiales en NotebookLM</span>
-        </div>
-        <Link href="/schedule" className="cta-link">Ver el temario completo →</Link>
+        <p className="schedule-subtitle">Temario completo</p>
+        <a href={generalMindMapUrl} target="_blank" rel="noreferrer" className="mindmap-link general-map-link">
+          Mapa general del curso →
+        </a>
       </div>
 
-      <section className="mindmaps">
-        <h2>Mapas mentales</h2>
-        <p className="section-hint">
-          Un mapa mental por clase, construido a partir de la transcripción íntegra de cada vídeo.
-        </p>
-        <div className="mindmap-grid">
-          {mindMapLessons.map((lesson) => (
-            <a
-              key={lesson.day}
-              href={lesson.mindMapUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="mindmap-card"
-            >
-              <span className="day-badge">Día {lesson.day}</span>
-              <h3>{lesson.title}</h3>
-              <p>{lesson.topics}</p>
-              <span className="card-cta">Ver mapa mental →</span>
-            </a>
-          ))}
-        </div>
-      </section>
+      {courseParts.map((part) => {
+        const lessons = part.lessons.filter((lesson) => lesson.notebookVideos && lesson.notebookVideos.length > 0);
+        if (lessons.length === 0 && !part.alwaysShow) return null;
 
-      <section className="materials">
-        <h2>Materiales</h2>
-        <ul className="materials-list">
-          {courseMaterials.map((material) => (
-            <li key={material.title}>
-              {material.url ? (
-                <a href={material.url} target="_blank" rel="noreferrer">
-                  <strong>{material.title}</strong>
-                </a>
-              ) : (
-                <strong>{material.title}</strong>
-              )}{" "}
-              — {material.note}
-            </li>
-          ))}
-        </ul>
-      </section>
+        return (
+          <section className="part" key={part.title}>
+            <h2>{part.title}</h2>
+            <div className="lesson-list">
+              {lessons.map((lesson) => (
+                <article
+                  className={`lesson-card${lesson.mindMapUrl ? " has-mindmap" : ""}`}
+                  key={lesson.dayLabel ?? lesson.day}
+                >
+                  <span className="day-badge">Día {lesson.dayLabel ?? lesson.day}</span>
+                  <h3>{lesson.title}</h3>
+                  <p className="topics">{lesson.topics}</p>
+                  <div className="lesson-links">
+                    {lesson.notebookVideos?.map((video) => (
+                      video.url ? (
+                        <a key={video.title} href={video.url} target="_blank" rel="noreferrer" className="video-link">
+                          ▶ {video.title}
+                        </a>
+                      ) : (
+                        <span key={video.title} className="video-link">▶ {video.title} (enlace no verificado)</span>
+                      )
+                    ))}
+                    {lesson.mindMapUrl && (
+                      <a href={lesson.mindMapUrl} target="_blank" rel="noreferrer" className="mindmap-link">
+                        Mapa mental →
+                      </a>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        );
+      })}
     </main>
   );
 }
