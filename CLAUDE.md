@@ -418,8 +418,7 @@ streamlit run app.py     # http://localhost:8501
   published overview map of these 9 parts, with every class leaf linking to its own map.
   It is generated from `course.ts` by a Node script, not written by hand, so regenerate
   and republish it when a part, title or `mindMapUrl` changes. `bookSummaryUrl` (linked
-  beside it) is a published chapter-by-chapter summary of Mises's *La acción humana*, built
-  from a local epub the user dropped in `src/` (reference input only — never commit it). Keep this grouping unless the user changes it; mentions
+  beside it) is the book-summary Artifact — see "Book summaries" below. Keep this grouping unless the user changes it; mentions
   of "Quinta Parte", "Sexta Parte" and so on in the history notes above refer to the old
   official parts. A lesson is filed under whichever part it
   thematically belongs to, which is not always the part its `day` number would suggest if
@@ -565,6 +564,33 @@ streamlit run app.py     # http://localhost:8501
     `qnum`/`qname` columns) rather than reusing the diagram's SVG vocabulary. It goes in the
     same place as a diagram would: inside that branch's `<div class="notes-field">`, right
     after the `<textarea>`, wrapped in its own `<figure>` with a `<figcaption>`.
+- **Book summaries**: `bookSummaryUrl` in `course.ts` points at a published summary of
+  Mises's *La acción humana* (1949), https://claude.ai/artifact/HYuUYxuGrbrvXrz7QFES2w,
+  linked from the temario header beside the general map. It was built from an epub the user
+  dropped into `src/` (the Spanish Unión Editorial edition, trad. Joaquín Reig, estudio
+  preliminar de Huerta de Soto). Such books are reference input only: `*.epub` is in
+  `.gitignore`, never commit them (the repo is public), and never link to the shadow-library
+  source they came from. The page follows the book's own 7 Partes / 39 capítulos, with a
+  folding card per chapter (summary, key points, concept tags), a concept search box, a
+  "En el curso" pointer from each Parte to the matching course part(s), a notes textarea per
+  Parte (`localStorage` prefix `economia-accion-humana-resumen-notes-`), and a "← Temario
+  del curso" link back to https://economia-o778.onrender.com/ at the top and in the footer.
+  Any text inside «» is copied word for word and checked against the epub; everything else
+  is paraphrase. Keep it that way: no long excerpts. The free official English edition is
+  linked at mises.org (`/library/book/human-action`). The authored HTML lived only in a
+  session scratchpad, so to edit it, fetch the current source with `Artifact` `action:
+  "read"` and republish to the same `url`.
+  - Working with an epub: it's a zip, so copy it to the scratchpad as `.zip`, run
+    PowerShell `Expand-Archive`, then convert `OEBPS/Text/*.xhtml` to plain text with a
+    small Node script (strip tags, reflow to ~200-char lines) so `Grep`/`Read` can page
+    through it. The Bash tool's sandbox can't create or `cd` into the scratchpad's temp
+    path, so do the file work in that directory through PowerShell (or Node launched from
+    PowerShell). PowerShell console output shows accented text as mojibake (`ACCIÃ“N`); the
+    files themselves are fine UTF-8, so read them with `Read` or `-Encoding utf8`.
+  - Artifacts are published private. Claude can't change their sharing, so the user has to
+    open the page and set it to anyone-with-the-link from its Share menu. Until they do,
+    site visitors get a page they can't open. Remind them whenever a new Artifact gets
+    linked from the site.
 - `streamlit_app/sources.py` holds a static, hand-maintained copy of the notebook's
   source list (id + title) pulled via `notebook_get`; `streamlit_app/app.py` renders it
   as a searchable/filterable table. Regenerate `sources.py` by re-running `notebook_get`
