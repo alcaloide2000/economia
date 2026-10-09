@@ -32,6 +32,8 @@ export const courseTitle = "Acción Humana";
 export const generalMindMapUrl = "https://claude.ai/artifact/6GATPobvTasGHCNvtSyrTb";
 /** Published chapter-by-chapter summary of Mises's La acción humana (1949) */
 export const bookSummaryUrl = "https://claude.ai/artifact/HYuUYxuGrbrvXrz7QFES2w";
+/** Published mind map of the same book: 7 parts, 39 chapters, each linking into the summary */
+export const bookMindMapUrl = "https://claude.ai/artifact/Bga8VxVmfgLrQNKRs9oysj";
 export const courseProfessor = "Jesús Huerta de Soto";
 export const courseSource = "Guía Docente al Curso por Internet (Unión Editorial, 2014), Universidad Rey Juan Carlos";
 

@@ -1,4 +1,4 @@
-import { bookSummaryUrl, courseParts, courseTitle, generalMindMapUrl } from "@/data/course";
+import { bookMindMapUrl, bookSummaryUrl, courseParts, courseTitle, generalMindMapUrl } from "@/data/course";
 
 export default function Home() {
   return (
@@ -11,6 +11,9 @@ export default function Home() {
         </a>
         <a href={bookSummaryUrl} target="_blank" rel="noreferrer" className="mindmap-link general-map-link">
           Resumen de La acción humana (Mises, 1949) →
+        </a>
+        <a href={bookMindMapUrl} target="_blank" rel="noreferrer" className="mindmap-link general-map-link">
+          Mapa mental del libro →
         </a>
       </div>
 

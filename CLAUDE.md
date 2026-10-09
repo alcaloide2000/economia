@@ -580,6 +580,15 @@ streamlit run app.py     # http://localhost:8501
   linked at mises.org (`/library/book/human-action`). The authored HTML lived only in a
   session scratchpad, so to edit it, fetch the current source with `Artifact` `action:
   "read"` and republish to the same `url`.
+  - `bookMindMapUrl` (https://claude.ai/artifact/Bga8VxVmfgLrQNKRs9oysj, also linked from
+    the temario header) is the book's mind map, laid out like the general course map: a
+    central node, the 7 Partes as branches (each tagged with the course parts that cover
+    it), and 40 chapter leaves (Intro + I–XXXIX) with a one-line idea each. Each leaf links
+    to `{bookSummaryUrl}#cap-{n}` (`#cap-intro`, `#cap-1` … `#cap-39`, Arabic numerals); the
+    summary gives each chapter card that `id` and opens it on load and on `hashchange`. If a
+    chapter's numbering or `n` label changes in either page, keep these anchors in sync. The
+    summary links back to the map from its byline. Notes use the
+    `economia-accion-humana-mindmap-notes-` prefix.
   - Working with an epub: it's a zip, so copy it to the scratchpad as `.zip`, run
     PowerShell `Expand-Archive`, then convert `OEBPS/Text/*.xhtml` to plain text with a
     small Node script (strip tags, reflow to ~200-char lines) so `Grep`/`Read` can page
