@@ -30,6 +30,8 @@ const companionUrl = (day: number) => `https://www.anarcocapitalista.com/JHSLecc
 export const courseTitle = "Acción Humana";
 /** Published overview mind map: the 9 parts, each class linking to its own map */
 export const generalMindMapUrl = "https://claude.ai/artifact/6GATPobvTasGHCNvtSyrTb";
+/** Published chapter-by-chapter summary of Mises's La acción humana (1949) */
+export const bookSummaryUrl = "https://claude.ai/artifact/HYuUYxuGrbrvXrz7QFES2w";
 export const courseProfessor = "Jesús Huerta de Soto";
 export const courseSource = "Guía Docente al Curso por Internet (Unión Editorial, 2014), Universidad Rey Juan Carlos";
 

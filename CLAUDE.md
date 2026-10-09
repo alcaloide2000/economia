@@ -417,7 +417,9 @@ streamlit run app.py     # http://localhost:8501
   España, UE y Marx (40–43). `generalMindMapUrl` (linked under the page header) is a
   published overview map of these 9 parts, with every class leaf linking to its own map.
   It is generated from `course.ts` by a Node script, not written by hand, so regenerate
-  and republish it when a part, title or `mindMapUrl` changes. Keep this grouping unless the user changes it; mentions
+  and republish it when a part, title or `mindMapUrl` changes. `bookSummaryUrl` (linked
+  beside it) is a published chapter-by-chapter summary of Mises's *La acción humana*, built
+  from a local epub the user dropped in `src/` (reference input only — never commit it). Keep this grouping unless the user changes it; mentions
   of "Quinta Parte", "Sexta Parte" and so on in the history notes above refer to the old
   official parts. A lesson is filed under whichever part it
   thematically belongs to, which is not always the part its `day` number would suggest if

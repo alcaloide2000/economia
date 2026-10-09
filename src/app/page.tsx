@@ -1,4 +1,4 @@
-import { courseParts, courseTitle, generalMindMapUrl } from "@/data/course";
+import { bookSummaryUrl, courseParts, courseTitle, generalMindMapUrl } from "@/data/course";
 
 export default function Home() {
   return (
@@ -8,6 +8,9 @@ export default function Home() {
         <p className="schedule-subtitle">Temario completo</p>
         <a href={generalMindMapUrl} target="_blank" rel="noreferrer" className="mindmap-link general-map-link">
           Mapa general del curso →
+        </a>
+        <a href={bookSummaryUrl} target="_blank" rel="noreferrer" className="mindmap-link general-map-link">
+          Resumen de La acción humana (Mises, 1949) →
         </a>
       </div>
 

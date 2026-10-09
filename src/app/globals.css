@@ -86,6 +86,10 @@ a {
   margin-top: 0.9rem;
 }
 
+.general-map-link + .general-map-link {
+  margin-left: 1.25rem;
+}
+
 .part {
   margin-bottom: 2.5rem;
 }
