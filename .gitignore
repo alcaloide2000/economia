@@ -8,3 +8,6 @@ build/
 .idea/
 *.tsbuildinfo
 __pycache__/
+
+# Reference books dropped in for summaries (copyrighted, never commit)
+*.epub
