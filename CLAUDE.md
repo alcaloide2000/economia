@@ -380,10 +380,12 @@ npm install       # install dependencies
 npm run dev        # start dev server (http://localhost:3000)
 npm run build      # production build
 npm run start      # run the production build
-npm run lint       # eslint (next lint)
+npm run lint       # eslint (next lint) — not configured yet, see below
 ```
 
-There is no test suite yet.
+There is no test suite yet. ESLint has never been set up, so `npm run lint` stops at
+Next's interactive "How would you like to configure ESLint?" prompt and can't run
+unattended. Use `npx tsc --noEmit` as the check after editing TypeScript.
 
 To run the Streamlit source-index app:
 
@@ -662,6 +664,40 @@ streamlit run app.py     # http://localhost:8501
     and `economia-menger-mindmap-notes-` (keys `capitulo1`…). The Ricardo, Smith and Menger
     maps all come from one generic generator that takes a data module of blocks and
     leaves.
+  - The generator is `scripts/book-maps/build-book-map.cjs`. For each book there is a
+    data module (`ricardo.cjs`, `smith.cjs`, `menger.cjs`) holding the blocks and leaves,
+    and a page template (`<book>.tpl.html`) holding the head, styles, intro, footer and
+    notes script. Running `node scripts/book-maps/build-book-map.cjs menger out.html`
+    rebuilds the published page exactly. Republish `out.html` to the existing map URL
+    from `course.ts`. The data module's `notesKey` / `notesNoun` / `numbered` options
+    control the notes keys and labels, so no post-processing is needed. When a leaf or a
+    page text changes, edit the data or template and rebuild, rather than editing a
+    downloaded copy. Bastiat's map came from an earlier one-off script that wasn't kept;
+    to change its layout, port its leaves into a data module, recovering them from the
+    published map's SVG.
+  - `scripts/book-maps/check-quotes.cjs <source.txt> <page.html> [--dta]` checks every
+    «» quote on a summary page against the source text. It exits 1 if any quote is
+    missing. `--dta` handles Deutsches Textarchiv text by joining hyphenated words and
+    printing each quote's page. Download the source into the scratchpad first; it isn't
+    kept in the repo.
+  - **Adding another book** follows the same recipe as the four above:
+    1. Use a public-domain source (Gutenberg, Deutsches Textarchiv) or a file the user
+       drops into `src/`, which stays gitignored. Prefer the first edition, and cite by
+       chapter instead of page when the text is a later edition.
+    2. Write the summary in Spanish. Put the author's original words in «», each followed
+       by a translation and checked verbatim against the source text by a script. Use
+       plain quotes for Spanish words. Follow the book's own structure when it has one;
+       otherwise group the chapters into thematic "bloques" and say so on the page.
+    3. Add an "{Autor} en el curso" box with timestamped video links found by searching
+       `src/data/transcripts.json`. Drop false hits (namesakes, relatives) and record the
+       exclusions here. Where the professor's claim doesn't match the text, say so on the
+       page.
+    4. Build the mind map with a leaf per chapter linking to `{summaryUrl}#cap-…`. The two
+       pages link to each other, and both carry "← Temario del curso" links and notes
+       textareas (`economia-{autor}-{resumen|mindmap}-notes-`).
+    5. Add `{autor}SummaryUrl` / `{autor}MindMapUrl` to `course.ts` and two links in the
+       `page.tsx` header after the last book, before "Buscar en las clases →". Document
+       the pair in this section, then remind the user to share both Artifacts.
   - Artifacts are published private. Claude can't change their sharing, so the user has to
     open the page and set it to anyone-with-the-link from its Share menu. Until they do,
     site visitors get a page they can't open. Remind them whenever a new Artifact gets

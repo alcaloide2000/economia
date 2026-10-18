@@ -1,0 +1,53 @@
+module.exports = {
+  SUM: 'https://claude.ai/artifact/S7yWbnTgE18531cC3tMebJ',
+  aria: 'Mapa mental de los Principios de economía política y tributación de David Ricardo: un nodo central conectado a seis bloques temáticos, cada uno con sus capítulos.',
+  trunk: ['TRATADO · 1817', ['Principios de', 'economía política', 'y tributación'], 'David Ricardo'],
+  notesKey: 'bloque',
+  numbered: true,
+  BLOCKS: [
+  { c: 'p1', tag: 'BLOQUE 1 · 5 TEXTOS', name: ['El valor', 'y el precio'], course: 'Curso: Días 28 y 29', title: 'El valor y el precio', leaves: [
+    ['prefacio', 'Prefacio', 'Prefacio', 'El problema central: cómo se reparte el producto en renta, beneficio y salario'],
+    ['1', 'Cap. I', 'Sobre el valor', 'El valor lo da el trabajo; el sombrerero que cambia hombres por máquina'],
+    ['4', 'Cap. IV', 'Precio natural y precio de mercado', 'Las desviaciones de precio mueven el capital hasta igualar los beneficios'],
+    ['18', 'Cap. XVIII', 'Valor y riqueza', 'Más medias con el mismo trabajo: más riqueza, no más valor'],
+    ['28', 'Cap. XXVIII', 'La oferta y la demanda', 'A la larga el precio lo fija el coste de producción, no la demanda'],
+  ]},
+  { c: 'p2', tag: 'BLOQUE 2 · 4 CAPÍTULOS', name: ['La renta', 'de la tierra'], course: 'Curso: Día 32', title: 'La renta de la tierra', leaves: [
+    ['2', 'Cap. II', 'Sobre la renta', 'Se paga renta porque el trigo es caro, no al revés: tierras 100, 90, 80'],
+    ['3', 'Cap. III', 'La renta de las minas', 'La mina más pobre no paga renta y fija el valor del metal'],
+    ['22', 'Cap. XXII', 'Smith sobre la renta', 'Contra Smith: en todo país hay tierra que no paga renta'],
+    ['29', 'Cap. XXIX', 'Malthus sobre la renta', 'La renta no crea riqueza: es una transferencia entre clases'],
+  ]},
+  { c: 'p3', tag: 'BLOQUE 3 · 5 CAPÍTULOS', name: ['Salarios, beneficios', 'y acumulación'], course: 'Curso: no lo cita aquí', title: 'Salarios, beneficios y acumulación', leaves: [
+    ['5', 'Cap. V', 'Sobre los salarios', 'Salario natural y de mercado; los salarios, fuera del alcance del legislador'],
+    ['5b', 'Cap. V*', 'Sobre los beneficios', 'La tendencia natural de los beneficios es a caer: el estado estacionario'],
+    ['19', 'Cap. XIX', 'Acumulación, beneficios e interés', 'Con Say: la demanda solo está limitada por la producción'],
+    ['24', 'Cap. XXIV', 'Renta bruta y renta neta', 'Importa la renta neta del país, no cuánta gente emplea'],
+    ['26', 'Cap. XXVI', 'Oro, trigo y trabajo', 'En los países ricos el alimento es caro, no barato como creía Smith'],
+  ]},
+  { c: 'p4', tag: 'BLOQUE 4 · 5 CAPÍTULOS', name: ['Comercio', 'exterior'], course: 'Curso: Días 12, 13 y 38', title: 'Comercio exterior', leaves: [
+    ['6', 'Cap. VI', 'Sobre el comercio exterior', 'Vino y paño: Portugal gana especializándose aunque sea mejor en ambos'],
+    ['17', 'Cap. XVII', 'Cambios bruscos en el comercio', 'Las crisis comerciales no justifican prohibir la importación de trigo'],
+    ['20', 'Cap. XX', 'Primas y prohibiciones', 'La prima abarata el trigo al extranjero; la renta gana con la prohibición'],
+    ['21', 'Cap. XXI', 'Primas a la producción', 'Lo que paga una clase lo recibe otra: el producto no cambia'],
+    ['23', 'Cap. XXIII', 'El comercio colonial', 'El monopolio colonial es injusto, aunque a veces beneficie a la metrópoli'],
+  ]},
+  { c: 'p5', tag: 'BLOQUE 5 · 12 CAPÍTULOS', name: ['Los', 'impuestos'], course: 'Curso: no lo cita aquí', title: 'Los impuestos', leaves: [
+    ['7', 'Cap. VII', 'Sobre los impuestos', 'Todo impuesto sale del capital o de la renta y frena la acumulación'],
+    ['8', 'Cap. VIII', 'Productos agrícolas', 'Ni el terrateniente ni el agricultor: lo paga el consumidor'],
+    ['8b', 'Cap. VIII*', 'La renta de la tierra', 'Recae entero sobre el terrateniente y no cambia el precio del trigo'],
+    ['9', 'Cap. IX', 'Los diezmos', 'Impuesto sobre el producto bruto que paga el consumidor'],
+    ['10', 'Cap. X', 'El impuesto territorial', 'Proporcional a la renta, lo paga el dueño; sobre toda tierra, el consumidor'],
+    ['11', 'Cap. XI', 'Impuestos sobre el oro', 'El oro se ajusta despacio: el impuesto tarda en trasladarse'],
+    ['12', 'Cap. XII', 'Impuestos sobre las casas', 'Parte del impuesto vuelve al propietario en un alquiler menor'],
+    ['13', 'Cap. XIII', 'Impuestos sobre los beneficios', 'Lo que sube los salarios baja los beneficios'],
+    ['14', 'Cap. XIV', 'Impuestos sobre los salarios', 'Un impuesto sobre los salarios es un impuesto sobre los beneficios'],
+    ['15', 'Cap. XV', 'Otras mercancías', 'Sube el precio de lo gravado; el de lujo lo paga quien lo compra'],
+    ['16', 'Cap. XVI', 'La contribución de pobres', 'Según el caso la pagan consumidores, capitalistas o terratenientes'],
+    ['27', 'Cap. XXVII', 'Impuestos que paga el productor', 'Contra Say: adelantar el impuesto no es una carga añadida'],
+  ]},
+  { c: 'p6', tag: 'BLOQUE 6 · 1 CAPÍTULO', name: ['El dinero', 'y los bancos'], course: 'Curso: no lo cita aquí', title: 'El dinero y los bancos', leaves: [
+    ['25', 'Cap. XXV', 'Sobre la moneda y los bancos', 'Papel limitado en cantidad y convertible: nadie emite sin abusar'],
+  ]},
+  ],
+};

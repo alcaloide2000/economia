@@ -1,0 +1,159 @@
+<title>Principios de Menger · Mapa mental</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg: #efece3; --bg-raised: #ffffff; --ink: #211c14; --ink-soft: #5a5346; --line: #cdc4b0; --trunk: #211c14; --trunk-ink: #f4efe1; --accent: #a9761f;
+    --p1: #a9761f; --p1-soft: #f5ecd7;
+    --p2: #a24a3a; --p2-soft: #f4e1dc;
+    --p3: #3f6b8f; --p3-soft: #e1eaf2;
+    --p4: #4f7a5a; --p4-soft: #e3eee6;
+    --p5: #8a4f7d; --p5-soft: #f1e4ee;
+    --p6: #6b6b2f; --p6-soft: #ececd9;
+    --p7: #2f6f6f; --p7-soft: #dcecec;
+    --p8: #7a5a2f; --p8-soft: #efe5d6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #161310; --bg-raised: #1e1a15; --ink: #eee7d6; --ink-soft: #ada596; --line: #3a3327; --trunk: #eee7d6; --trunk-ink: #161310; --accent: #dcae4c;
+      --p1: #dcae4c; --p1-soft: #2c2413;
+      --p2: #d9806e; --p2-soft: #2e1c17;
+      --p3: #7fa9cf; --p3-soft: #18232e;
+      --p4: #7fb38b; --p4-soft: #19281d;
+      --p5: #c48ab6; --p5-soft: #2a1c27;
+      --p6: #c2c27a; --p6-soft: #25251a;
+      --p7: #7cc0bf; --p7-soft: #172828;
+      --p8: #c9a16e; --p8-soft: #2a2116;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #161310; --bg-raised: #1e1a15; --ink: #eee7d6; --ink-soft: #ada596; --line: #3a3327; --trunk: #eee7d6; --trunk-ink: #161310; --accent: #dcae4c;
+    --p1: #dcae4c; --p1-soft: #2c2413;
+    --p2: #d9806e; --p2-soft: #2e1c17;
+    --p3: #7fa9cf; --p3-soft: #18232e;
+    --p4: #7fb38b; --p4-soft: #19281d;
+    --p5: #c48ab6; --p5-soft: #2a1c27;
+    --p6: #c2c27a; --p6-soft: #25251a;
+      --p7: #7cc0bf; --p7-soft: #172828;
+      --p8: #c9a16e; --p8-soft: #2a2116;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  .page { max-width: 1200px; margin: 0 auto; padding: 40px 28px 80px; }
+  .back { display: inline-block; margin-bottom: 18px; font-size: 13px; color: var(--accent); text-decoration: none; }
+  .back:hover { text-decoration: underline; }
+  .eyebrow { font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin: 0 0 14px; }
+  h1 { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-size: clamp(28px, 4.4vw, 44px); line-height: 1.12; margin: 0 0 10px; text-wrap: balance; font-weight: 600; }
+  .dek { max-width: 70ch; font-size: 16px; line-height: 1.55; color: var(--ink-soft); margin: 0 0 8px; }
+  .dek a { color: var(--accent); }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 22px 0 40px; font-size: 12.5px; color: var(--ink-soft); }
+  .meta span { border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; }
+  .diagram-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 18px; background: var(--bg-raised); padding: 8px; }
+  .diagram-wrap svg { display: block; width: 1330px; max-width: none; height: auto; }
+  svg text { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .bnum { font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; }
+  .bname { font-size: 14px; font-weight: 700; }
+  .bcourse { font-size: 11px; }
+  .lday { font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .ltitle { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .lidea { font-size: 11.5px; fill: var(--ink-soft); }
+  .larrow { font-size: 14px; font-weight: 700; }
+  .leaf rect:first-of-type { transition: fill 0.15s ease; }
+  .leaf:hover rect:first-of-type { fill: var(--bg); }
+  .leaf:focus { outline: none; }
+  .leaf:focus-visible rect:first-of-type { stroke-width: 2.5; fill: var(--bg); }
+  figcaption { margin-top: 14px; font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 18px; font-size: 12.5px; color: var(--ink-soft); }
+  .legend .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
+  .notes { margin-top: 40px; }
+  .notes-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 12px; margin-bottom: 6px; }
+  .notes-head h2 { margin: 0; font-size: 15px; font-weight: 700; }
+  .notes-hint { font-size: 11.5px; color: var(--ink-soft); }
+  .notes-rows { margin-top: 16px; display: flex; flex-direction: column; gap: 14px; }
+  .notes-row { display: flex; gap: 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--bg-raised); padding: 14px 16px; }
+  .notes-branch { flex: 0 0 220px; display: flex; flex-direction: column; justify-content: center; gap: 6px; border-right: 1px solid var(--line); padding-right: 16px; }
+  .notes-branch .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .notes-branch strong { font-size: 13px; line-height: 1.35; }
+  .notes-field { flex: 1 1 auto; display: flex; flex-direction: column; min-width: 0; }
+  .notes .notes-row textarea { width: 100%; min-height: 72px; resize: vertical; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--branch-accent, var(--ink)); font: inherit; font-size: 13.5px; font-weight: 500; line-height: 1.5; padding: 10px 12px; }
+  .notes .notes-row textarea::placeholder { color: var(--ink-soft); font-weight: 400; opacity: .8; }
+  .notes-row textarea:focus { outline: 2px solid var(--branch-accent); outline-offset: 1px; }
+  .notes-status { margin-top: 6px; font-size: 11px; color: var(--ink-soft); min-height: 14px; }
+  footer { margin-top: 46px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--ink-soft); line-height: 1.6; }
+  footer a { color: var(--accent); }
+  @media (max-width: 640px) {
+    .page { padding: 28px 16px 56px; }
+    .notes-row { flex-direction: column; }
+    .notes-branch { flex: none; border-right: none; border-bottom: 1px solid var(--line); padding: 0 0 10px; flex-direction: row; align-items: center; }
+  }
+</style>
+
+<div class="page">
+  <a class="back" href="https://economia-o778.onrender.com/">← Temario del curso</a>
+  <p class="eyebrow">Carl Menger · 1871 · Mapa mental del libro</p>
+  <h1>Principios de economía política</h1>
+  <p class="dek">El libro entero en un solo mapa: el prólogo y los ocho capítulos de Menger, con cada uno de sus apartados (§) y su idea central. Pulsa un capítulo para abrir el <a href="https://claude.ai/artifact/6YLXxHFCiBH5tBKm7uL4pL">resumen completo</a>.</p>
+  <div class="meta">
+    <span>Prólogo y 8 capítulos</span>
+    <span>26 apartados</span>
+    <span>Cada capítulo indica en qué días del curso lo cita el profesor</span>
+  </div>
+
+  <figure style="margin:0;">
+    <div class="diagram-wrap">
+      %%SVG%%
+    </div>
+    <figcaption>Las ramas son los ocho capítulos de Menger y las hojas sus apartados (§), con los títulos traducidos y abreviados del alemán. La línea gris bajo cada capítulo señala los días del curso en que el profesor cita a Menger sobre esa materia: el método y los bienes de orden superior del capítulo I, el valor subjetivo del III, la no equivalencia de los precios del V y el origen espontáneo del dinero del VIII.</figcaption>
+  </figure>
+
+  <div class="legend">
+%%LEGEND%%
+  </div>
+
+  <section class="notes">
+    <div class="notes-head">
+      <h2>Tus notas, capítulo por capítulo</h2>
+      <span class="notes-hint">Se guardan automáticamente en este navegador; no se sincronizan entre dispositivos.</span>
+    </div>
+    <div class="notes-rows">
+%%ROWS%%
+    </div>
+  </section>
+
+  <footer>Ver también el <a href="https://claude.ai/artifact/6YLXxHFCiBH5tBKm7uL4pL">resumen capítulo a capítulo</a>, con las citas originales y los minutos de clase en que el profesor cita a Menger, y el <a href="https://economia-o778.onrender.com/">temario del curso</a>. Texto alemán completo en el <a href="https://www.deutschestextarchiv.de/book/show/menger_volkswirtschaftslehre_1871">Deutsches Textarchiv</a>; traducción inglesa libre en el <a href="https://cdn.mises.org/principles_of_economics.pdf">Mises Institute</a>.</footer>
+</div>
+
+<script>
+  (function () {
+    var PREFIX = "economia-menger-mindmap-notes-";
+    document.querySelectorAll("textarea[data-notes-key]").forEach(function (box) {
+      var status = box.parentElement.querySelector("[data-notes-status]");
+      var key = PREFIX + box.getAttribute("data-notes-key");
+      var timer = null;
+      try {
+        var saved = window.localStorage.getItem(key);
+        if (saved) { box.value = saved; status.textContent = "Guardado"; }
+      } catch (err) {
+        box.disabled = true;
+        box.placeholder = "Almacenamiento local no disponible en este navegador.";
+        return;
+      }
+      box.addEventListener("input", function () {
+        status.textContent = "Escribiendo…";
+        window.clearTimeout(timer);
+        timer = window.setTimeout(function () {
+          try {
+            if (box.value) {
+              window.localStorage.setItem(key, box.value);
+              status.textContent = "Guardado a las " + new Date().toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" });
+            } else {
+              window.localStorage.removeItem(key);
+              status.textContent = "";
+            }
+          } catch (err) { status.textContent = "No se pudo guardar"; }
+        }, 400);
+      });
+    });
+  })();
+</script>
