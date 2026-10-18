@@ -34,6 +34,14 @@ export const generalMindMapUrl = "https://claude.ai/artifact/6GATPobvTasGHCNvtSy
 export const bookSummaryUrl = "https://claude.ai/artifact/HYuUYxuGrbrvXrz7QFES2w";
 /** Published mind map of the same book: 7 parts, 39 chapters, each linking into the summary */
 export const bookMindMapUrl = "https://claude.ai/artifact/Bga8VxVmfgLrQNKRs9oysj";
+/** Published chapter-by-chapter summary of Bastiat's Ce qu'on voit et ce qu'on ne voit pas (1850) */
+export const bastiatSummaryUrl = "https://claude.ai/artifact/LNy9Ge5GTQKaPNYAjFGYR3";
+/** Published mind map of the same essay: 5 thematic blocks, 12 chapters, each linking into the summary */
+export const bastiatMindMapUrl = "https://claude.ai/artifact/L2CMuy9F2ije1r1jCgq6W1";
+/** Published chapter-by-chapter summary of Ricardo's Principles of Political Economy and Taxation (1817) */
+export const ricardoSummaryUrl = "https://claude.ai/artifact/S7yWbnTgE18531cC3tMebJ";
+/** Published mind map of the same book: 6 thematic blocks, preface and 31 chapters, each linking into the summary */
+export const ricardoMindMapUrl = "https://claude.ai/artifact/A3SCX8gT1ovDCdz5SBVLec";
 export const courseProfessor = "Jesús Huerta de Soto";
 export const courseSource = "Guía Docente al Curso por Internet (Unión Editorial, 2014), Universidad Rey Juan Carlos";
 

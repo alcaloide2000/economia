@@ -81,13 +81,11 @@ a {
   color: var(--ink-soft);
 }
 
-.general-map-link {
-  display: inline-block;
+.header-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.25rem;
   margin-top: 0.9rem;
-}
-
-.general-map-link + .general-map-link {
-  margin-left: 1.25rem;
 }
 
 .part {

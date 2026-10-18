@@ -1,4 +1,14 @@
-import { bookMindMapUrl, bookSummaryUrl, courseParts, courseTitle, generalMindMapUrl } from "@/data/course";
+import {
+  bastiatMindMapUrl,
+  bastiatSummaryUrl,
+  bookMindMapUrl,
+  bookSummaryUrl,
+  courseParts,
+  courseTitle,
+  generalMindMapUrl,
+  ricardoMindMapUrl,
+  ricardoSummaryUrl,
+} from "@/data/course";
 
 export default function Home() {
   return (
@@ -6,18 +16,32 @@ export default function Home() {
       <div className="schedule-header">
         <h1>{courseTitle}</h1>
         <p className="schedule-subtitle">Temario completo</p>
-        <a href={generalMindMapUrl} target="_blank" rel="noreferrer" className="mindmap-link general-map-link">
-          Mapa general del curso →
-        </a>
-        <a href={bookSummaryUrl} target="_blank" rel="noreferrer" className="mindmap-link general-map-link">
-          Resumen de La acción humana (Mises, 1949) →
-        </a>
-        <a href={bookMindMapUrl} target="_blank" rel="noreferrer" className="mindmap-link general-map-link">
-          Mapa mental del libro →
-        </a>
-        <a href="/buscar" className="mindmap-link general-map-link">
-          Buscar en las clases →
-        </a>
+        <nav className="header-links">
+          <a href={generalMindMapUrl} target="_blank" rel="noreferrer" className="mindmap-link">
+            Mapa general del curso →
+          </a>
+          <a href={bookSummaryUrl} target="_blank" rel="noreferrer" className="mindmap-link">
+            Resumen de La acción humana (Mises, 1949) →
+          </a>
+          <a href={bookMindMapUrl} target="_blank" rel="noreferrer" className="mindmap-link">
+            Mapa mental del libro →
+          </a>
+          <a href={bastiatSummaryUrl} target="_blank" rel="noreferrer" className="mindmap-link">
+            Resumen de Lo que se ve y lo que no se ve (Bastiat, 1850) →
+          </a>
+          <a href={bastiatMindMapUrl} target="_blank" rel="noreferrer" className="mindmap-link">
+            Mapa mental del ensayo →
+          </a>
+          <a href={ricardoSummaryUrl} target="_blank" rel="noreferrer" className="mindmap-link">
+            Resumen de los Principios de economía política (Ricardo, 1817) →
+          </a>
+          <a href={ricardoMindMapUrl} target="_blank" rel="noreferrer" className="mindmap-link">
+            Mapa mental de los Principios →
+          </a>
+          <a href="/buscar" className="mindmap-link">
+            Buscar en las clases →
+          </a>
+        </nav>
       </div>
 
       {courseParts.map((part) => {

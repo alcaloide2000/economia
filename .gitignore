@@ -11,6 +11,7 @@ __pycache__/
 
 # Reference books dropped in for summaries (copyrighted, never commit)
 *.epub
+src/*.pdf
 
 # Caption downloads cached by scripts/build-transcripts.mjs
 .transcripts-cache/
