@@ -641,6 +641,27 @@ streamlit run app.py     # http://localhost:8501
     is a poem, not him. In Día 37 the professor says Smith liked arresting smugglers, but
     V.2 speaks of the smuggler sympathetically, and the page says so. Notes prefixes are
     `economia-smith-resumen-notes-` and `economia-smith-mindmap-notes-` (keys `libro1`…).
+  - `mengerSummaryUrl` (https://claude.ai/artifact/6YLXxHFCiBH5tBKm7uL4pL) and
+    `mengerMindMapUrl` (https://claude.ai/artifact/8JA15xzLhyyN4NcCDfJoh7) are the same pair
+    for Carl Menger's *Grundsätze der Volkswirthschaftslehre* (1871). The source is the
+    German first edition as plain text from the Deutsches Textarchiv
+    (`/book/download_txt/menger_volkswirtschaftslehre_1871`; note "wirtschaft" without the
+    h in the id). The site serves a JS cookie wall, so fetch it with a PowerShell
+    `WebRequestSession` that carries a `verified=1` cookie. The text marks printed pages as
+    `[123/0139]` lines and hyphenates across lines, so de-hyphenate before searching or
+    checking quotes. A small Node helper did that and returned the 1871 page for each match.
+    «» holds Menger's German words verbatim in the original spelling (Werth, Güterqualität),
+    each one checked along with its page, followed by a translation. The free English
+    translation linked is the Mises Institute PDF. The structure is Menger's own: the parts
+    are the 8 chapters and the cards are the sections (§). Anchors are `#cap-vorrede`,
+    `#cap-{chapter}-{section}` (`#cap-1-1` … `#cap-8-4`), `#cap-5-0` for chapter V's
+    introduction and `#cap-6` for the undivided chapter VI. The "Menger en el curso" box
+    covers 14 classes. Mentions of his son Karl, the mathematician (Día 9), are left out.
+    The Día 17 "lectura obligada" on the origin of money is his 1892 article, but it makes
+    the same argument as chapter VIII. Notes prefixes are `economia-menger-resumen-notes-`
+    and `economia-menger-mindmap-notes-` (keys `capitulo1`…). The Ricardo, Smith and Menger
+    maps all come from one generic generator that takes a data module of blocks and
+    leaves.
   - Artifacts are published private. Claude can't change their sharing, so the user has to
     open the page and set it to anyone-with-the-link from its Share menu. Until they do,
     site visitors get a page they can't open. Remind them whenever a new Artifact gets

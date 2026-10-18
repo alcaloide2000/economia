@@ -6,6 +6,8 @@ import {
   courseParts,
   courseTitle,
   generalMindMapUrl,
+  mengerMindMapUrl,
+  mengerSummaryUrl,
   ricardoMindMapUrl,
   ricardoSummaryUrl,
   smithMindMapUrl,
@@ -45,6 +47,12 @@ export default function Home() {
           </a>
           <a href={smithMindMapUrl} target="_blank" rel="noreferrer" className="mindmap-link">
             Mapa mental de La riqueza de las naciones →
+          </a>
+          <a href={mengerSummaryUrl} target="_blank" rel="noreferrer" className="mindmap-link">
+            Resumen de los Principios de economía política (Menger, 1871) →
+          </a>
+          <a href={mengerMindMapUrl} target="_blank" rel="noreferrer" className="mindmap-link">
+            Mapa mental de los Principios de Menger →
           </a>
           <a href="/buscar" className="mindmap-link">
             Buscar en las clases →

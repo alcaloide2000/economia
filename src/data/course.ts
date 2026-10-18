@@ -46,6 +46,10 @@ export const ricardoMindMapUrl = "https://claude.ai/artifact/A3SCX8gT1ovDCdz5SBV
 export const smithSummaryUrl = "https://claude.ai/artifact/4XCYsLMskoQECduJfreK5F";
 /** Published mind map of the same book: its 5 books as branches, 32 chapters, each linking into the summary */
 export const smithMindMapUrl = "https://claude.ai/artifact/JkgXMY7rjg2QpZ4AxbkALi";
+/** Published section-by-section summary of Carl Menger's Grundsätze der Volkswirthschaftslehre (1871) */
+export const mengerSummaryUrl = "https://claude.ai/artifact/6YLXxHFCiBH5tBKm7uL4pL";
+/** Published mind map of the same book: its 8 chapters as branches, 26 sections, each linking into the summary */
+export const mengerMindMapUrl = "https://claude.ai/artifact/8JA15xzLhyyN4NcCDfJoh7";
 export const courseProfessor = "Jesús Huerta de Soto";
 export const courseSource = "Guía Docente al Curso por Internet (Unión Editorial, 2014), Universidad Rey Juan Carlos";
 
