@@ -184,10 +184,19 @@ a {
   margin-bottom: 0.75rem;
 }
 
-.search-video-title {
-  margin: 0 0 0.6rem;
+.search-group + .search-group {
+  margin-top: 0.9rem;
+}
+
+.search-group-title {
+  margin: 0 0 0.5rem;
   font-size: 0.82rem;
   color: var(--ink-soft);
+}
+
+.search-map-link {
+  display: inline-block;
+  margin-top: 0.6rem;
 }
 
 .search-hits {
@@ -206,7 +215,7 @@ a {
   font-size: 0.9rem;
 }
 
-.search-time {
+.search-tag {
   flex: none;
   min-width: 4.2rem;
   font-variant-numeric: tabular-nums;
@@ -220,7 +229,18 @@ a {
   text-decoration: none;
 }
 
-.search-time:hover {
+.search-tag-map {
+  width: 8.5rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--ink-soft);
+  background: transparent;
+  border: 1px solid var(--line);
+}
+
+.search-tag:hover {
   text-decoration: underline;
 }
 

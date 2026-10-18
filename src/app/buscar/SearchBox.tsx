@@ -1,9 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { SearchHit, VideoResult } from "@/lib/transcriptSearch";
-
-type Response = { results: VideoResult[]; total: number; truncated: boolean };
+import type { SearchResponse } from "@/lib/search";
 
 const formatTime = (seconds: number) => {
   const h = Math.floor(seconds / 3600);
@@ -16,9 +14,11 @@ const formatTime = (seconds: number) => {
 const videoLink = (videoId: string, seconds: number) =>
   `https://www.youtube.com/watch?v=${videoId}&t=${Math.max(0, seconds - 3)}s`;
 
+const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
+
 export default function SearchBox() {
   const [query, setQuery] = useState("");
-  const [data, setData] = useState<Response | null>(null);
+  const [data, setData] = useState<SearchResponse | null>(null);
   const [loading, setLoading] = useState(false);
 
   // Restore a search from the URL (?q=...) so results can be linked
@@ -70,28 +70,62 @@ export default function SearchBox() {
         {loading
           ? "Buscando…"
           : data
-            ? data.total === 0
+            ? data.results.length === 0
               ? "Sin resultados."
-              : `${data.total} menciones en ${data.results.length} ${data.results.length === 1 ? "clase" : "clases"}` +
+              : `${plural(data.videoTotal, "mención", "menciones")} en los vídeos y ` +
+                `${data.mapTotal} en los mapas mentales, ` +
+                `en ${plural(data.results.length, "clase", "clases")}` +
                 (data.truncated ? " (se muestran las primeras 400)" : "")
-            : "Busca sin preocuparte por las tildes ni las mayúsculas. Los subtítulos son los automáticos de YouTube, así que algún nombre propio puede estar mal transcrito."}
+            : "Busca en lo que se dice en los vídeos y en el texto de los mapas mentales, sin preocuparte por las tildes ni las mayúsculas. Los subtítulos de los vídeos son los automáticos de YouTube, así que algún nombre propio puede estar mal transcrito."}
       </p>
 
-      {data?.results.map((video) => (
-        <section className="lesson-card search-result" key={video.videoId}>
-          <span className="day-badge">Día {video.day}</span>
-          <h3>{video.lessonTitle}</h3>
-          <p className="search-video-title">▶ {video.videoTitle}</p>
-          <ul className="search-hits">
-            {video.hits.map((hit) => (
-              <li key={hit.seconds}>
-                <a href={videoLink(video.videoId, hit.seconds)} target="_blank" rel="noreferrer" className="search-time">
-                  {formatTime(hit.seconds)}
+      {data?.results.map((lesson) => (
+        <section className="lesson-card search-result" key={lesson.day}>
+          <span className="day-badge">Día {lesson.day}</span>
+          <h3>{lesson.lessonTitle}</h3>
+
+          {lesson.videos.map((video) => (
+            <div className="search-group" key={video.videoId}>
+              <p className="search-group-title">▶ {video.videoTitle}</p>
+              <ul className="search-hits">
+                {video.hits.map((hit) => (
+                  <li key={hit.seconds}>
+                    <a href={videoLink(video.videoId, hit.seconds)} target="_blank" rel="noreferrer" className="search-tag">
+                      {formatTime(hit.seconds)}
+                    </a>
+                    <Highlighted text={[hit.before, hit.match, hit.after].filter(Boolean).join(" ")} query={query} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          {lesson.mapHits.length > 0 && (
+            <div className="search-group">
+              <p className="search-group-title">
+                En el{" "}
+                <a href={lesson.mindMapUrl} target="_blank" rel="noreferrer" className="mindmap-link">
+                  mapa mental →
                 </a>
-                <Snippet hit={hit} query={query} />
-              </li>
-            ))}
-          </ul>
+              </p>
+              <ul className="search-hits">
+                {lesson.mapHits.map((hit, i) => (
+                  <li key={i}>
+                    <a href={lesson.mindMapUrl} target="_blank" rel="noreferrer" className="search-tag search-tag-map">
+                      {hit.kind}
+                    </a>
+                    <Highlighted text={hit.text} query={query} maxLength={260} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {lesson.mapHits.length === 0 && lesson.mindMapUrl && (
+            <a href={lesson.mindMapUrl} target="_blank" rel="noreferrer" className="mindmap-link search-map-link">
+              Mapa mental →
+            </a>
+          )}
         </section>
       ))}
     </>
@@ -100,12 +134,27 @@ export default function SearchBox() {
 
 const fold = (text: string) => text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
-/** Caption context with the searched words highlighted (accent-insensitive) */
-function Snippet({ hit, query }: { hit: SearchHit; query: string }) {
-  const text = [hit.before, hit.match, hit.after].filter(Boolean).join(" ");
-  const folded = fold(text);
+/**
+ * Text with the searched words highlighted (accent-insensitive). Text longer than
+ * `maxLength` is cut to a window around the first match.
+ */
+function Highlighted({ text, query, maxLength }: { text: string; query: string; maxLength?: number }) {
   const words = fold(query).split(/\s+/).filter((w) => w.length >= 2);
+  let prefix = "…";
+  let suffix = "…";
 
+  if (maxLength && text.length > maxLength) {
+    const first = Math.max(0, fold(text).indexOf(fold(query).trim().split(/\s+/)[0] ?? ""));
+    const start = Math.max(0, Math.min(first - maxLength / 3, text.length - maxLength));
+    const end = start + maxLength;
+    prefix = start > 0 ? "…" : "";
+    suffix = end < text.length ? "…" : "";
+    text = text.slice(start, end);
+  } else if (maxLength) {
+    prefix = suffix = "";
+  }
+
+  const folded = fold(text);
   const marks = new Array<boolean>(text.length).fill(false);
   for (const word of words) {
     for (let i = folded.indexOf(word); i !== -1; i = folded.indexOf(word, i + 1)) {
@@ -122,5 +171,5 @@ function Snippet({ hit, query }: { hit: SearchHit; query: string }) {
       start = i;
     }
   }
-  return <span className="search-snippet">…{parts}…</span>;
+  return <span className="search-snippet">{prefix}{parts}{suffix}</span>;
 }
