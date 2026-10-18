@@ -15,6 +15,9 @@ export default function Home() {
         <a href={bookMindMapUrl} target="_blank" rel="noreferrer" className="mindmap-link general-map-link">
           Mapa mental del libro →
         </a>
+        <a href="/buscar" className="mindmap-link general-map-link">
+          Buscar en las clases →
+        </a>
       </div>
 
       {courseParts.map((part) => {

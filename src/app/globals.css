@@ -155,3 +155,83 @@ a {
   text-decoration-color: var(--line);
   text-underline-offset: 3px;
 }
+
+/* ===== Buscar en las clases ===== */
+
+.search-input {
+  width: 100%;
+  font: inherit;
+  font-size: 1.05rem;
+  color: var(--ink);
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+}
+
+.search-input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.search-status {
+  margin: 0.6rem 0 1.5rem;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+}
+
+.search-result {
+  margin-bottom: 0.75rem;
+}
+
+.search-video-title {
+  margin: 0 0 0.6rem;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.search-hits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.search-hits li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+  font-size: 0.9rem;
+}
+
+.search-time {
+  flex: none;
+  min-width: 4.2rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--accent-ink);
+  background: var(--accent-soft);
+  border-radius: 6px;
+  padding: 0.1rem 0.45rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.search-time:hover {
+  text-decoration: underline;
+}
+
+.search-snippet {
+  color: var(--ink-soft);
+}
+
+.search-snippet mark {
+  background: var(--accent-soft);
+  color: var(--ink);
+  font-weight: 600;
+  border-radius: 3px;
+  padding: 0 1px;
+}
