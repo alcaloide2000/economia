@@ -8,6 +8,8 @@ import {
   generalMindMapUrl,
   ricardoMindMapUrl,
   ricardoSummaryUrl,
+  smithMindMapUrl,
+  smithSummaryUrl,
 } from "@/data/course";
 
 export default function Home() {
@@ -37,6 +39,12 @@ export default function Home() {
           </a>
           <a href={ricardoMindMapUrl} target="_blank" rel="noreferrer" className="mindmap-link">
             Mapa mental de los Principios →
+          </a>
+          <a href={smithSummaryUrl} target="_blank" rel="noreferrer" className="mindmap-link">
+            Resumen de La riqueza de las naciones (Smith, 1776) →
+          </a>
+          <a href={smithMindMapUrl} target="_blank" rel="noreferrer" className="mindmap-link">
+            Mapa mental de La riqueza de las naciones →
           </a>
           <a href="/buscar" className="mindmap-link">
             Buscar en las clases →

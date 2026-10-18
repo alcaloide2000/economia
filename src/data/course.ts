@@ -42,6 +42,10 @@ export const bastiatMindMapUrl = "https://claude.ai/artifact/L2CMuy9F2ije1r1jCgq
 export const ricardoSummaryUrl = "https://claude.ai/artifact/S7yWbnTgE18531cC3tMebJ";
 /** Published mind map of the same book: 6 thematic blocks, preface and 31 chapters, each linking into the summary */
 export const ricardoMindMapUrl = "https://claude.ai/artifact/A3SCX8gT1ovDCdz5SBVLec";
+/** Published book-by-book summary of Adam Smith's The Wealth of Nations (1776) */
+export const smithSummaryUrl = "https://claude.ai/artifact/4XCYsLMskoQECduJfreK5F";
+/** Published mind map of the same book: its 5 books as branches, 32 chapters, each linking into the summary */
+export const smithMindMapUrl = "https://claude.ai/artifact/JkgXMY7rjg2QpZ4AxbkALi";
 export const courseProfessor = "Jesús Huerta de Soto";
 export const courseSource = "Guía Docente al Curso por Internet (Unión Editorial, 2014), Universidad Rey Juan Carlos";
 

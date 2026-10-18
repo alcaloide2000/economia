@@ -629,6 +629,18 @@ streamlit run app.py     # http://localhost:8501
     so they're left out. Notes prefixes: `economia-ricardo-resumen-notes-` and
     `economia-ricardo-mindmap-notes-`. Like Bastiat's, the map's SVG came from a Node script
     with the blocks as data, so regenerate it rather than hand-editing coordinates.
+  - `smithSummaryUrl` (https://claude.ai/artifact/4XCYsLMskoQECduJfreK5F) and
+    `smithMindMapUrl` (https://claude.ai/artifact/JkgXMY7rjg2QpZ4AxbkALi) are the same pair
+    for Adam Smith's *The Wealth of Nations* (1776), from Project Gutenberg #3300. That text
+    is a revised later edition (it mentions "the two first editions" and includes the Bank
+    of Amsterdam digression added later), so the pages give no page numbers and cite by
+    book and chapter (`IV.2`). Unlike Ricardo and Bastiat, the grouping is Smith's own five
+    Books. Anchors are `#cap-intro` and `#cap-{book}-{chapter}` (`#cap-1-1` … `#cap-5-3`).
+    «» quotes are verbatim English, checked against the Gutenberg text. The "Smith en el
+    curso" box covers Días 6, 11 bis, 22, 25, 28, 31, 37 and 40. "Tom Smith" (Días 16-17)
+    is a poem, not him. In Día 37 the professor says Smith liked arresting smugglers, but
+    V.2 speaks of the smuggler sympathetically, and the page says so. Notes prefixes are
+    `economia-smith-resumen-notes-` and `economia-smith-mindmap-notes-` (keys `libro1`…).
   - Artifacts are published private. Claude can't change their sharing, so the user has to
     open the page and set it to anyone-with-the-link from its Share menu. Until they do,
     site visitors get a page they can't open. Remind them whenever a new Artifact gets
